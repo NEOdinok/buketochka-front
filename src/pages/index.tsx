@@ -1,6 +1,12 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+import { Roboto } from 'next/font/google'
+
+// const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({ 
+  subsets: ['latin', 'cyrillic'],
+  weight: ["300", "400", "700"],//light, regular, bold
+  preload: true,
+})
 
 export default function Home() {
   return (
@@ -12,7 +18,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <main>
- 
       </main>
     </>
   )
