@@ -1,0 +1,29 @@
+@import '/src/styles/breakpoints';
+
+.header {
+  position: relative;
+  width: 100%;
+  display: grid;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sloganSection {
+  text-align: center;
+}
+
+.logo {
+  width: 220px;
+  height: fit-content;
+}
+
+@include desktop {
+  .header {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2rem;
+  }
+}
