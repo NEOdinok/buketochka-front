@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
 import buketochkaLogo from "src/assets/imgs/logos/buketochka_logo.jpeg";
+import HeaderContactList from '../HeaderContactList/HeaderContactList';
 
 interface Props {
   open?: boolean;
@@ -21,7 +22,8 @@ const SiteHeader: React.FC<Props> = ({className, setOpen, open}) => {
 				<p className={styles.slogan}>Букеты и наборы из клубники в бельгийском шоколаде</p>
 			</div>
 			<div className={cn(styles.socialSection, styles.headerSection)}>
-				<p className={styles.socialList}>Social line</p>
+				{/* <p className={styles.socialList}>Social line</p> */}
+				<HeaderContactList />
 			</div>
 		</header>
 	);
