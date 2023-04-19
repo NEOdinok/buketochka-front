@@ -1,3 +1,6 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
 .headerContactList {
 	position: relative;
 	display: flex;
@@ -45,4 +48,10 @@
 .phone {
 	font-size: 1.6rem;
 	cursor: pointer;
+}
+
+@include mobileAndTablet {
+	.headerContactList {
+		display: none;
+	}
 }

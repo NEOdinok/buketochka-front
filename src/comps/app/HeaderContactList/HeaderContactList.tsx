@@ -5,9 +5,9 @@ import Link from 'next/link';
 import styles from './styles.module.scss';
 import cn from "classnames";
 
-const HeaderContactList = () => {
+const HeaderContactList:React.FC = () => {
 	return (
-		<div className={styles.headerContactList}>
+		<div className={cn(styles.headerContactList)}>
 			<div className={cn(styles.numberSection, styles.contactsSection)}>
 				<a className={styles.phone}>+7(903)624-55-56</a>
 			</div>

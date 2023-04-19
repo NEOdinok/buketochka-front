@@ -26,13 +26,18 @@
 }
 
 @include desktop {
+  .burgerBtn {
+    display: none;
+  }
+
   .header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
   
   .logo {
-    max-width: 22rem;
+    // max-width: 22rem;
+    max-width: $header-logo-width-desktop;
   }
 
   .headerSection {
@@ -45,20 +50,33 @@
     padding-right: 15%;
     display: flex;
   }
+
+  .burgerBtnContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $header-and-burger-height;
+  }
+
+  .logo {
+    max-width: $header-logo-width-mob-and-tab;
+    max-height: $header-and-burger-height;
+  }
+
+  .socialAndBurgerSection {
+    top: 0;
+    right: 0;
+    position: fixed;
+    margin: $header-padding;
+    z-index: 3;
+  }
 }
 
 @include tablet {
   .header {
     justify-content: flex-start;
     gap: 1rem;
-  }
-
-  .logo {
-    max-width: 20rem;
-  }
-
-  .socialSection {
-    display: none;
   }
 
   .sloganSection {
@@ -80,16 +98,8 @@
     gap: 1.5rem;
   }
 
-  .logo {
-    max-width: 24rem;
-  }
-
   .slogan {
     text-align: start;
     max-width: 30rem;
-  }
-
-  .socialSection {
-    display: none;
   }
 }

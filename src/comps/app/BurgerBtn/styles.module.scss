@@ -1,0 +1,56 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.menuBtn {
+	position: relative;
+	appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+.menuBtn,
+.menuBtn span {
+	display: inline-block;
+	box-sizing: border-box;
+	transition: all .4s;
+}
+.menuBtn {
+	width: 3rem;
+	height: 2.2rem;
+}
+.menuBtnLine {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 0.2rem;
+	background: #233b5d;
+	border-radius: 0.2rem;
+}
+.menuBtn .menuBtnLineTop {
+	top: 0;
+}
+.menuBtn .menuBtnLineMid {
+	top: 1rem; /* (heght(.menuBtn)  - height(.menuBtn span)) / 2 */
+}
+.menuBtn .menuBtnLineBot {
+	bottom: 0;
+}
+.menuBtn.onMenu .menuBtnLine {
+	// background: #233b5d;
+	background-color: white;
+}
+.menuBtn.onMenu .menuBtnLineTop {
+	transform: translateY(1rem) rotate(-45deg);
+}
+.menuBtn.onMenu .menuBtnLineMid {
+	opacity: 0;
+}
+.menuBtn.onMenu .menuBtnLineBot {
+	transform: translateY(-1rem) rotate(45deg);
+}
+
+@include desktop {
+	.menuBtn {
+		display: none;
+	}
+}

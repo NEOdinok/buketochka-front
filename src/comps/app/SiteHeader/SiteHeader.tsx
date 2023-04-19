@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import cn from 'classnames';
 import buketochkaLogo from "src/assets/imgs/logos/buketochka_logo.jpeg";
 import HeaderContactList from '../HeaderContactList/HeaderContactList';
+import BurgerBtn from '../BurgerBtn/BurgerBtn';
 
 interface Props {
   open?: boolean;
@@ -21,9 +22,11 @@ const SiteHeader: React.FC<Props> = ({className, setOpen, open}) => {
 			<div className={cn(styles.sloganSection, styles.headerSection)}>
 				<p className={styles.slogan}>Букеты и наборы из клубники в бельгийском шоколаде</p>
 			</div>
-			<div className={cn(styles.socialSection, styles.headerSection)}>
-				{/* <p className={styles.socialList}>Social line</p> */}
+			<div className={cn(styles.socialAndBurgerSection, styles.headerSection)}>
 				<HeaderContactList />
+				<div className={styles.burgerBtnContainer}>
+					<BurgerBtn />
+				</div>
 			</div>
 		</header>
 	);

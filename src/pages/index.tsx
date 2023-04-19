@@ -1,15 +1,3 @@
-import { Roboto } from 'next/font/google'
-import { useRef, useState, RefObject, useEffect } from 'react';
-import SiteHeader from '@/comps/app/SiteHeader/SiteHeader';
-import Navbar from '@/comps/app/NavBar/Navbar';
-
-// const inter = Inter({ subsets: ['latin'] })
-const roboto = Roboto({ 
-  subsets: ['latin', 'cyrillic'],
-  weight: ["300", "400", "500", "700"],//light, regular, med, bold
-  preload: true,
-})
-
 interface Props {
   className?: string;
   active: boolean;
@@ -58,17 +46,7 @@ export default function Home() {
 
   return (
     <>
-      <SiteHeader />
-      <Navbar />
-      <main>
-        {/* <HeroSection ref={heroSectionRef} active={heroActive}/>
-        <CardsSection />
-        <SetsSection ref={setsSectionRef} active={setsActive}/>
-        <StrawberrySection ref={strawberrySectionRef} active={strawberryActive}/>
-        <ChokoSection ref={chokoSectionRef} active={chokoActive}/>
-        <CombinationSection ref={combinationSectionRef} active={chokoActive} />
-        <ContactsList contacts={contacts}/> */}
-      </main>
+      <p>Index file</p>
     </>
   )
 }
