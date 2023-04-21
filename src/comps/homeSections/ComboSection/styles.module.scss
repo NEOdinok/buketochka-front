@@ -1,0 +1,61 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.chocoSection {
+	display: block;
+	position: relative;
+	background-color: #d0b6e3;
+	height: 110vh;
+	min-height: 70rem;
+}
+
+.content {
+	position: relative;
+	height: 100%;
+	display: flex;
+}
+
+.textContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imageContainer,
+.textContainer {
+	position: relative;
+	height: 100%;
+	flex: 1;
+}
+
+.text {
+	font-size: 4rem;
+	text-shadow: 1px 2px 30px rgba(255, 255, 255, 0.7);
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 500;
+	line-height: 10rem;
+	opacity: 0;
+	color: white;
+	transition: opacity 750ms ease;
+}
+
+.image {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	transform: scale(.2);
+	opacity: 0;
+	transition: opacity 750ms, transform 700ms;
+}
+
+.active .image {
+	opacity: 1;
+	right: -35%;
+	bottom: -40%;
+	transform: scale(.6);
+}
+
+.active .text {
+	opacity: 1;
+}

@@ -43,7 +43,7 @@
   min-height: 15rem;
 	margin-bottom: 4.5rem;
 	transition: transform 150ms ease;
-	box-shadow: 10px 10px 30px #CCC;
+	box-shadow: $shadow;
 
 	&:hover {
 		transform: scale(1.03);

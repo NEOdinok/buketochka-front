@@ -6,10 +6,11 @@ import WhiteBackdrop from '@/comps/app/whiteBackdrop/WhiteBackdrop';
 import Navbar from "@/comps/app/NavBar/Navbar";
 import { ReactNode } from 'react';
 import { Roboto } from 'next/font/google'
+import SiteFooter from '@/comps/app/SiteFooter/SiteFooter';
 
 const roboto = Roboto({ 
   subsets: ['latin', 'cyrillic'],
-  weight: ["300", "400", "500", "700"],//light, regular, med, bold
+  weight: ["300", "400", "500", "700", "900"],//light, regular, med, bold
   preload: true,
 })
 
@@ -27,6 +28,7 @@ const MainLayout: React.FC<Props> = ({children, className}) => {
       <div className={cn(styles.layout, className, roboto.className)}>
 				{ children }
 			</div>
+      <SiteFooter />
     </>
   )
 }

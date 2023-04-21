@@ -1,0 +1,84 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.berrySection {
+	display: block;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 90vh;
+}
+
+.header,
+.subheader {
+	color: #414141;
+}
+
+.header {
+	font-weight: 700;
+	font-size: 4rem;
+	line-height: 110%;
+	margin: 2.4rem 0 1.4rem 0;
+}
+
+.subHeader {
+	font-weight: 300;
+	font-size: 3rem;
+	line-height: 110%;
+}
+
+.content {
+	margin-top: 10rem;
+	position: relative;
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.imageContainer,
+.textContainer {
+	position: relative;
+	height: 100%;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.image {
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	transition: all 700ms ease-in;
+}
+
+.active .image {
+	left: 20vw;
+	opacity: 1;
+
+}
+
+.text {
+	text-align: center;
+	line-height: 10rem;
+	text-transform: uppercase;
+	color: #343434;
+	letter-spacing: 4px;
+	font-weight: 500;
+	font-size: 4rem;
+}
+
+@include desktop {
+	.content {
+		height: 70vh;
+		flex-direction: row;
+	}
+}
+
+@include mobileAndTablet {
+	.content {
+		height: 90vh;
+	}
+}

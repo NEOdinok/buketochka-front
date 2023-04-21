@@ -1,0 +1,45 @@
+.footer {
+	position: relative;
+	display: flex;
+	align-items: center;
+	// gap: 4rem;
+	justify-content: space-between;
+	padding: 3rem;
+	width: 100%;
+}
+
+.header {
+	color: #414141;
+	padding: 4rem 0;
+	font-size: 4rem;
+	font-weight: 700;
+}
+
+.linksContainer {
+	display: flex;
+	gap: 2rem;
+}
+
+.socialIcon {
+	font-size: 4rem;
+
+	&:hover {
+		opacity: .9;
+		transform: scale(1.05);
+	}
+}
+
+.instagramIcon {
+	background: #d6249f;
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.telegramIcon {
+	color: #4c99db;
+}
+
+.whatsappIcon {
+	color: #00e676;
+}

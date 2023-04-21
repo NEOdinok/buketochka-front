@@ -2,6 +2,7 @@
 @import '/src/styles/breakpoints';
 
 .navbar {
+	z-index: 1;
 	display: flex;
 	transition: opacity 100ms, transform 100ms;
 }

@@ -1,7 +1,11 @@
 import HeroSection from "@/comps/homeSections/HeroSection/HeroSection";
 import CardsSection from "@/comps/homeSections/CardsSection/CardsSection";
+import SetsSection from "@/comps/homeSections/SetsSection/SetsSection";
+import BerrySection from "@/comps/homeSections/BerrySection/BerrySection";
+import ChocoSection from "@/comps/homeSections/ChocoSection/ChocoSection";
+import ComboSection from "@/comps/homeSections/ComboSection/ComboSection";
 import { NextPage } from "next";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { isInViewport } from "@/utils/homePageUi";
 
 const Home: NextPage = () => {
@@ -9,38 +13,44 @@ const Home: NextPage = () => {
   const heroSectionRef = useRef<HTMLElement>(null);
   const [ cardsActive, setCardsActive ] = useState(false)
   const cardsSectionRef = useRef<HTMLElement>(null);
+  const [setsActive, setSetsActive] = useState(false);
+  const setsSectionRef = useRef<HTMLElement>(null);
+  const [berryActive, setBerryActive] = useState(false);
+  const berrySectionRef = useRef<HTMLElement>(null);
+  const [chocoActive, setChocoActive] = useState(false);
+  const chocoSectionRef = useRef<HTMLElement>(null);
+  const [comboActive, setComboActive] = useState(false);
+  const comboSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    document.addEventListener("scroll", (e: Event) => {
+      isInViewport(heroSectionRef, setHeroActive);
+      isInViewport(setsSectionRef, setSetsActive); 
+      isInViewport(berrySectionRef, setBerryActive); 
+      isInViewport(chocoSectionRef, setChocoActive); 
+      isInViewport(comboSectionRef, setComboActive); 
+    })
+    return (() => document.removeEventListener("scroll", (e: Event) => {
+      isInViewport(heroSectionRef, setHeroActive);
+      isInViewport(setsSectionRef, setSetsActive); 
+      isInViewport(berrySectionRef, setBerryActive); 
+      isInViewport(chocoSectionRef, setChocoActive); 
+      isInViewport(comboSectionRef, setComboActive); 
+    }))
+  }, []);
 
   setTimeout(() => {
     setHeroActive(true);
   }, 2000);
 
-  // const [ strawberryActive, setStrawberryActive ] = useState(false)
-  // const [ chokoActive, setChokoActive ] = useState(false)
-  // const [ combinationActive, setCombinationActive ] = useState(false)
-
-  // const strawberrySectionRef = useRef<HTMLDivElement>(null);
-  // const chokoSectionRef = useRef<HTMLDivElement>(null);
-  // const combinationSectionRef = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   document.addEventListener("scroll", (e: Event) => {
-  //     isInViewport(setsSectionRef, setSetsActive); 
-  //     isInViewport(strawberrySectionRef, setStrawberryActive);
-  //     isInViewport(chokoSectionRef, setChokoActive);
-  //     isInViewport(combinationSectionRef, setCombinationActive);
-  //   });
-  //   return (() => document.removeEventListener("scroll", (e: Event) => {
-  //     isInViewport(setsSectionRef, setSetsActive); 
-  //     isInViewport(strawberrySectionRef, setStrawberryActive);
-  //     isInViewport(chokoSectionRef, setChokoActive);
-  //     isInViewport(combinationSectionRef, setCombinationActive);
-  //   }));
-  // }, []);
-
   return (
     <>
       <HeroSection ref={heroSectionRef} active={heroActive} />
       <CardsSection ref={cardsSectionRef} active={cardsActive} />
+      <SetsSection ref={setsSectionRef} active={setsActive} />
+      <BerrySection ref={berrySectionRef} active={berryActive} />
+      <ChocoSection ref={chocoSectionRef} active={chocoActive} />
+      <ComboSection ref={comboSectionRef} active={comboActive}/>
     </>
   )
 }
