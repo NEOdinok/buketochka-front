@@ -14,16 +14,6 @@ const HeroSection = forwardRef<HTMLElement, Props>((props, ref) => {
 	const {active, className} = props;
 	const [isMobile, setIsMobile] = useState(false);
 
-	useEffect(() => {
-		if (window.innerWidth > 600) {
-			setIsMobile(false);
-			console.log('set big picture');
-		} else {
-			setIsMobile(true);
-			console.log('set mobile');
-		}
-	}, []);
-
 	return (
 		<section ref={ref} className={cn(className, styles.heroSection, active? styles.active: '')}>
 			<div className={styles.heroImgWrap}>

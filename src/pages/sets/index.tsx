@@ -1,24 +1,49 @@
 import type { NextPage } from 'next'
-import cn from 'classnames';
 import styles from './styles.module.scss';
-import cardImage from 'public/img/product.jpg';
-import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from '@/comps/app/ProductCard/ProductCard';
+import { getDocs, collection, DocumentData } from 'firebase/firestore';
+import { db } from '@/firebase/clientApp';
+import { ReactNode } from 'react';
 
-const Sets: NextPage = () => {
+interface staticProps {
+  products: DocumentData[];
+}
+
+export const getStaticProps = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'products'));
+    const products: DocumentData[] = [];
+    querySnapshot.forEach((productDoc) => {
+      products.push({...productDoc.data(), id: productDoc.id});
+    });
+    return {
+      props: {
+        products: JSON.parse(JSON.stringify(products)),
+      },
+    };
+  } catch (error) {
+    console.warn({error});
+  }
+}
+
+const Sets: NextPage<staticProps> = ({ products }) => {
+  const renderProductCards = () =>
+  products.map((product): ReactNode => (
+      <ProductCard 
+      name={product.name}
+      price={product.price}
+      id={product.id}
+      key={product.id}
+      page={'sets'}
+      />
+    )
+  );
+
   return (
 		<div className={styles.sets}>
       <h1 className={styles.header}>Ягодные наборы</h1>
-
       <section className={styles.cardsContainer}>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products && renderProductCards()}
       </section>
     </div>
   )
