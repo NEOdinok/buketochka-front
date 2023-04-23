@@ -1,0 +1,81 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.productCard {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border-radius: 2rem;
+	box-shadow: none;
+	transition: box-shadow 300ms, transform 200ms;
+
+	&:hover {
+		box-shadow: $shadow;
+		transform: scale(1.01);
+
+		.productPrice {
+			background-color: $buketochka-red;
+		}
+	}
+}
+
+.imageSection,
+.textSection {
+	position: relative;
+}
+
+.cardImage {
+	width: 100%;
+	object-fit: cover;
+	height: 35.5rem;
+	border-radius: 2rem;
+}
+
+.lowerSection {
+	padding: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cardText {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.productName {
+	text-align: left;
+	font-size: 2.5rem;
+	font-weight: 500;
+	color: #404040;
+}
+
+.btnIcon, 
+.cardBtn {
+	aspect-ratio: 1;
+}
+
+.cardBtn {
+	outline: none;
+	border: none;
+	border-radius: 50rem;
+}
+
+.btnIcon {
+	font-size: 2.5rem;
+	padding: 1rem;
+}
+
+.productPrice {
+	text-align: center;
+	letter-spacing: 1px;
+	font-size: 2.5rem;
+	font-weight: 500;
+	color: #fff;
+	border-radius: 40px;
+	background-color: #404040;
+	padding: 1rem 2rem;
+	transition: all 0.2s ease-out;
+}
