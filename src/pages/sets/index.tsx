@@ -11,10 +11,10 @@ interface staticProps {
 
 export const getStaticProps = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'products'));
+    const querySnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'products'));
     const products: DocumentData[] = [];
     querySnapshot.forEach((productDoc) => {
-      products.push({...productDoc.data(), id: productDoc.id});
+      products.push({ ...productDoc.data(), id: productDoc.id });
     });
     return {
       props: {

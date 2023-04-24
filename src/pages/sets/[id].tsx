@@ -48,7 +48,7 @@ export const getStaticProps = async (context: any) => {
 
 const Bouquet: NextPage<productProps> = ({ data }) => {
 	return (
-		<h1>{data.name}</h1>
+		<h1>Empty</h1>
 	);
 }
  

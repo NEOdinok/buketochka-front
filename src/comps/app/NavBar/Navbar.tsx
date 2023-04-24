@@ -8,7 +8,11 @@ import { faTelegram, faInstagram, faWhatsapp } from '@fortawesome/free-brands-sv
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-const Navbar: React.FC = observer(() => {
+interface Props {
+	test?: string
+}
+
+const Navbar: React.FC<Props> = observer(({test}) => {
 	const router = useRouter();
 	return (
 		<nav className={cn(styles.navbar, UIStore.isMenuOpen? styles.navbarOpen: '')}>
@@ -83,7 +87,6 @@ const Navbar: React.FC = observer(() => {
 						<FontAwesomeIcon className={cn(styles.telegramIcon, styles.socialIcon)} icon={faInstagram}/>
 					</Link>
 				</div>
-				{/* <SocialsList type={ 'drawer' } /> */}
 			</div>
 		</nav>
 	);
