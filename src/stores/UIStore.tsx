@@ -8,6 +8,10 @@ class CartStore {
 		this.isMenuOpen = !this.isMenuOpen;
 	}
 
+	toggleIsLoading= () => {
+		this.isLoading = !this.isLoading;
+	}
+
 	constructor() {
     makeAutoObservable(this);
   }

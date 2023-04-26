@@ -14,7 +14,25 @@ type productType = {
   subCategory: {label: string, value: string},
 }
 
+type subCategoryDataType = {
+  id: string,
+  name: string,
+  route: string,
+}
+
+type categoryDataType = {
+  id: string,
+  name: string,
+  route: string,
+  subcategories: Array<subCategoryDataType>;
+};
+
+type categoriesType = Array<categoryDataType>;
+
 export {
   type productType,
   type imageData,
+  type subCategoryDataType,
+  type categoryDataType,
+  type categoriesType,
 }
