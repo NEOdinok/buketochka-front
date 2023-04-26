@@ -9,64 +9,79 @@ import { db } from '@/firebase/clientApp';
 import { subCategoryDataType, categoriesType, categoryDataType } from '@/types';
 import UIStore from '@/stores/UIStore';
 
-// interface Props {
-// 	data: navBarDataType
-// }
+//snapshot = await getDocs()
+//categories = snapshot.docs.map(async category => ...)
+//subcategories = categories.map(async category.id => getDocs())
 
 const Navbar: React.FC = observer(() => {
 	const router = useRouter();
-	const [categories, setCategories] = useState<Array<{name: string, id: string, route: string}>>([]);
+	const [categories, setCategories] = useState<categoriesType>([]);
 
   useEffect(() => {
-		UIStore.toggleIsLoading();
-
+		const tempCategories: categoriesType = [];
     const getNavbarData = async () => {
-      try {
-				const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'))
-				const categoriesList = categoriesSnapshot.docs.map(doc => ({
-					id: doc.id,
-					name: doc.data().categoryRoute,
-					route: doc.data().categoryName,
-				}));	
-				console.log('const categories:', categoriesList);
-				setCategories(data => ([...data, ...categoriesList]))
-				if (categories) console.log('state categories:', categories);
-				UIStore.toggleIsLoading();
-      } catch (error) {
-        console.warn({error});
-      }
+		console.log('useEffect ran');
+		console.log('categories at start:', categories);
+
+		try {
+			const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'));
+			await Promise.all(
+				categoriesSnapshot.docs.map(async categoryDoc => {
+					const subCategoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories', categoryDoc.id, 'subcategories'));
+					const tempSubCategories: Array<subCategoryDataType> = subCategoriesSnapshot.docs.map(subCategoryDoc => ({ 
+							id: subCategoryDoc.id,
+							name: subCategoryDoc.data().subCategoryName,
+							route: subCategoryDoc.data().subCategoryRoute,
+						})
+					);
+					tempCategories.push({
+						id: categoryDoc.id,
+						name: categoryDoc.data().categoryName,
+						route: categoryDoc.data().categoryRoute,
+						subcategories: tempSubCategories,
+					})
+				})
+			)
+
+			setCategories(tempCategories);
+			console.log('categories inside:', categories)
+		} catch (error) {
+			console.warn({error});
+		}
     }
 
-    getNavbarData();
-  }, []);
+    if (!categories.length) getNavbarData();
+		console.log('categories at end:', categories);
+		if (categories.length) UIStore.toggleIsLoading();
+  }, [categories]);
 
-	// const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
-	// 	subcategories.map(
-	// 		(subcategory): ReactNode => (
-	// 			<li
-	// 				className={styles.subItem}
-	// 				onClick={() => { router.push(`/${subcategory.route}`)}}
-	// 				key={subcategory.id}
-	// 			>
-	// 				<span>{subcategory.name}</span>
-	// 			</li>
-	// 		)
-	// 	)
+	const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
+		subcategories.map(
+			(subcategory): ReactNode => (
+				<li
+					className={styles.subItem}
+					onClick={() => { router.push(`/${subcategory.route}`)}}
+					key={subcategory.id}
+				>
+					<span>{subcategory.name}</span>
+				</li>
+			)
+		)
 
-	// const renderNavbarCategories = () =>
-	// 	navBarData.map(
-	// 		(category): ReactNode => (
-	// 			<div className={ cn(router.pathname == `/${category.route}` ? styles.active : undefined, styles.navItem) }
-	// 				onClick={() => { router.push(`/${category.route}`)}}
-	// 				key={category.id}
-	// 			>
-	// 				<span className={styles.navItemText}>{category.name}</span>
-	// 				<ul className={ styles.subMenu }>
-	// 					{ renderSubcategories(category.subcategories)}
-	// 				</ul>
-	// 			</div>	
-	// 		)
-	// 	)
+	const renderCategories = () =>
+		categories.map(
+			(category): ReactNode => (
+				<div className={ cn(router.pathname == `/${category.route}` ? styles.active : undefined, styles.navItem) }
+					onClick={() => { router.push(`/${category.route}`)}}
+					key={category.id}
+				>
+					<span className={styles.navItemText}>{category.name}</span>
+					<ul className={ styles.subMenu }>
+						{ renderSubcategories(category.subcategories)}
+					</ul>
+				</div>	
+			)
+		)
 
 	return (
 		<nav className={cn(styles.navbar, UIStore.isMenuOpen? styles.navbarOpen: '')}>
@@ -76,7 +91,25 @@ const Navbar: React.FC = observer(() => {
 				>
 					<span className={styles.navItemText}>Главная</span>
 				</div>
-				{/* { renderNavbarCategories() } */}
+
+				{ renderCategories() }
+
+				<div className={ styles.cart }
+					onClick={() => { router.push('/cart')}}
+				>
+					<div className={ styles.cartContent }>
+						<div className={styles.cartIconSection}>
+							<i className={ cn(styles.cartIcon, "material-icons") }>add_shopping_cart</i>
+							<div className={ styles.counter }>
+								<span>0</span>
+							</div>
+						</div>
+						<div className={styles.cartArrowSection}>
+							<span className={ styles.toCartSpan }>В корзину</span>
+							<i className={ cn(styles.arrowIcon, "material-icons") }>keyboard_arrow_right</i>
+						</div>
+					</div>
+				</div>
 			</div>
 		</nav>
 	);

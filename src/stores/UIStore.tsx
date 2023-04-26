@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class CartStore {
 	isMenuOpen = false;
-	isLoading = false;
+	isLoading =true;
 
 	toggleMenuOpen = () => {
 		this.isMenuOpen = !this.isMenuOpen;
