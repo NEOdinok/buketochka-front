@@ -1,0 +1,49 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+
+.socialSection {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+@include desktop {
+	.checkoutForm {
+		padding: 10rem 0;
+	}
+
+	.socialSection {
+		gap: 3rem;
+	}
+
+	.recieverSection {
+		min-width: 42rem;
+		width: 40%;
+	}
+}
+
+@include mobileAndTablet {
+	.socialSection {
+		flex-direction: column;
+		align-items: center;
+	}	
+}
+
+@include mobile {
+	.recieverSection {
+		width: 85%;
+	}
+}
+
+@include tablet {
+	.socialSection {
+		gap: 2rem;
+	}
+
+	.recieverSection {
+		width: 50%;
+		min-width: 45rem;
+	}
+}

@@ -1,0 +1,55 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.inputField {
+	position: relative;
+	margin: 1.5rem 0;
+}
+
+.textArea, 
+.input {
+  width: 100%;
+  height: 5rem;
+  min-height: 5rem;
+  padding: 1.5rem 3rem;
+  outline: none;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 1.6rem;
+  background: #f3f7f8;
+  border: 2px solid transparent;
+  font-weight: 400;
+  color: #4b4b4b;
+  font-size: 1.6rem;
+  text-align: start;
+  outline: none;
+  transition: border 150ms;
+  resize: vertical;
+
+  &:focus {
+    border: 2px solid $active-color;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    color: transparent;
+  }
+
+}
+
+.label {
+  position: absolute;
+  font-size: 2rem;
+  left: 3rem;
+  top: 1.5rem;
+  letter-spacing: 1px;
+  // color: #858585;
+  color: rgba(0, 0, 0, 0.25);
+  background: #f3f7f8;
+  opacity: 1;
+  transition: opacity 150ms;
+
+  &.active {
+    opacity: 0;
+  }
+}

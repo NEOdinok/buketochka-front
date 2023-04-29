@@ -1,0 +1,27 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.recieverData {
+	display: flex;
+	flex-direction: column;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-align: center;
+	color: #313131;
+	margin-bottom: 6rem;
+}
+
+@include desktop {
+	.header {
+		font-size: 3rem;
+	}
+}
+
+@include mobileAndTablet {
+	.header {
+		font-size: 3.5rem;
+	}
+}

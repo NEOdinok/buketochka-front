@@ -1,0 +1,42 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.deliveryDate {
+	padding: 10rem 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	font-size: 3.5rem;
+	text-align: center;
+	color: #313131;
+	margin-bottom: 6rem;
+}
+
+.datePicker {
+  position: relative;
+	max-width: 46rem;
+  // text-align: start;
+	box-shadow: none !important;
+  width: 100% !important;
+  box-sizing: border-box!important;
+  background: #f3f7f8 !important;
+  border-radius: 16px!important;
+  font-weight: 500!important;
+  color: #4b4b4b!important;
+  font-size: 16px!important;
+  padding: 8px 16px!important;
+  height: 5rem !important;
+  border: 2px solid #f3f7f8 !important;
+
+	input {
+		font-size: 2rem !important;
+		color: #4b4b4b;
+		box-shadow: none !important;
+	}
+}

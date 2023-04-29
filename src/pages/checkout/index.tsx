@@ -1,9 +1,10 @@
-import { NextPage } from "next";
+import type { NextPage } from 'next'
+import CheckoutForm from '@/comps/checkout/CheckoutForm/CheckoutForm'
 
 const Checkout: NextPage = () => {
-	return (
-		<p>Checkout page</p>
-	);
+  return (
+    <CheckoutForm />
+  )
 }
- 
-export default Checkout;
+
+export default Checkout

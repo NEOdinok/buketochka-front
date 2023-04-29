@@ -1,0 +1,105 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.shippingOptions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.optionText {
+	font-size: 2rem;
+}
+
+.optionName {
+	color: #313131;
+}
+
+.optionPrice {
+	color: #00ba5d;
+	font-weight: 700;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	font-size: 3.5rem;
+	text-align: center;
+	margin-bottom: 6rem;
+}
+
+.optionCards {
+	display: flex;
+	gap: 2rem;
+	padding: 0 2rem;
+	width: 100%;
+	max-width: 100rem;
+}
+
+.option {
+	display: flex;
+	padding: 2.5rem;
+	height: 18rem;
+	width: 100%;
+	cursor: pointer;
+	border: 2px solid #f3f7f8;
+	background-color: #f3f7f8;
+	border-radius: 2rem;
+	transition: box-shadow 150ms, transform 150ms, border 200ms;
+
+	&:hover {
+		transform: scale(1.01);
+		border: 2px solid $active-color;
+	}
+}
+
+.active {
+	transform: scale(1.01);
+	border: 2px solid $active-color;
+}
+
+.optionNameAndPriceSection {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.optionIconSection {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.icon {
+	font-size: 8rem;
+}
+
+.additionalDeliveryInfoSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.deliveryInfoHeader {
+	display: flex;
+	justify-content: center;
+	color: #313131;
+	font-size: 2rem;
+	margin-top: 4rem;
+	margin-bottom: 2rem;
+}
+
+.additionalInput {
+	width: 40rem;
+}
+
+@include mobileAndTablet {
+	.optionCards {
+		flex-direction: column;
+		gap: 2rem;
+	}
+}

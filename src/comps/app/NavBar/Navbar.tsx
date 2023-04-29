@@ -17,6 +17,45 @@ const Navbar: React.FC = observer(() => {
 	const router = useRouter();
 	const [categories, setCategories] = useState<categoriesType>([]);
 
+	const getNavbarData = async () => {
+		const tempCategories: categoriesType = [];
+		console.log('[function start] categories:', categories);
+
+		try {
+			const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'));
+			await Promise.all(
+				categoriesSnapshot.docs.map(async categoryDoc => {
+					const subCategoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories', categoryDoc.id, 'subcategories'));
+					const tempSubCategories: Array<subCategoryDataType> = subCategoriesSnapshot.docs.map(subCategoryDoc => ({ 
+							id: subCategoryDoc.id,
+							name: subCategoryDoc.data().subCategoryName,
+							route: subCategoryDoc.data().subCategoryRoute,
+						})
+					);
+					tempCategories.push({
+						id: categoryDoc.id,
+						name: categoryDoc.data().categoryName,
+						route: categoryDoc.data().categoryRoute,
+						subcategories: tempSubCategories,
+					})
+				})
+			)
+
+			setCategories(tempCategories);
+			console.log('[after setState inside function] categories:', categories)
+		} catch (error) {
+			console.warn({error});
+		}
+	}
+
+	useEffect(() => {
+		console.log('useEffect ran');
+		!categories.length && getNavbarData();
+		console.log('[after function] categories:', categories)
+		categories.length && UIStore.toggleIsLoading();
+	}, [categories]);
+
+	/*
   useEffect(() => {
 		const tempCategories: categoriesType = [];
     const getNavbarData = async () => {
@@ -54,6 +93,7 @@ const Navbar: React.FC = observer(() => {
 		console.log('categories at end:', categories);
 		if (categories.length) UIStore.toggleIsLoading();
   }, [categories]);
+	*/
 
 	const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
 		subcategories.map(
