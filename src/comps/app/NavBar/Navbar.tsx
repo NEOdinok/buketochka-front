@@ -8,10 +8,7 @@ import { getDocs, collection, DocumentData } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
 import { subCategoryDataType, categoriesType, categoryDataType } from '@/types';
 import UIStore from '@/stores/UIStore';
-
-//snapshot = await getDocs()
-//categories = snapshot.docs.map(async category => ...)
-//subcategories = categories.map(async category.id => getDocs())
+import CartStore from '@/stores/CartStore';
 
 const Navbar: React.FC = observer(() => {
 	const router = useRouter();
@@ -19,7 +16,7 @@ const Navbar: React.FC = observer(() => {
 
 	const getNavbarData = async () => {
 		const tempCategories: categoriesType = [];
-		console.log('[function start] categories:', categories);
+		// console.log('[function start] categories:', categories);
 
 		try {
 			const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'));
@@ -42,58 +39,18 @@ const Navbar: React.FC = observer(() => {
 			)
 
 			setCategories(tempCategories);
-			console.log('[after setState inside function] categories:', categories)
+			// console.log('[after setState inside function] categories:', categories)
 		} catch (error) {
 			console.warn({error});
 		}
 	}
 
 	useEffect(() => {
-		console.log('useEffect ran');
+		// console.log('useEffect ran');
 		!categories.length && getNavbarData();
-		console.log('[after function] categories:', categories)
+		// console.log('[after function] categories:', categories)
 		categories.length && UIStore.toggleIsLoading();
 	}, [categories]);
-
-	/*
-  useEffect(() => {
-		const tempCategories: categoriesType = [];
-    const getNavbarData = async () => {
-		console.log('useEffect ran');
-		console.log('categories at start:', categories);
-
-		try {
-			const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'));
-			await Promise.all(
-				categoriesSnapshot.docs.map(async categoryDoc => {
-					const subCategoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories', categoryDoc.id, 'subcategories'));
-					const tempSubCategories: Array<subCategoryDataType> = subCategoriesSnapshot.docs.map(subCategoryDoc => ({ 
-							id: subCategoryDoc.id,
-							name: subCategoryDoc.data().subCategoryName,
-							route: subCategoryDoc.data().subCategoryRoute,
-						})
-					);
-					tempCategories.push({
-						id: categoryDoc.id,
-						name: categoryDoc.data().categoryName,
-						route: categoryDoc.data().categoryRoute,
-						subcategories: tempSubCategories,
-					})
-				})
-			)
-
-			setCategories(tempCategories);
-			console.log('categories inside:', categories)
-		} catch (error) {
-			console.warn({error});
-		}
-    }
-
-    if (!categories.length) getNavbarData();
-		console.log('categories at end:', categories);
-		if (categories.length) UIStore.toggleIsLoading();
-  }, [categories]);
-	*/
 
 	const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
 		subcategories.map(
@@ -141,7 +98,7 @@ const Navbar: React.FC = observer(() => {
 						<div className={styles.cartIconSection}>
 							<i className={ cn(styles.cartIcon, "material-icons") }>add_shopping_cart</i>
 							<div className={ styles.counter }>
-								<span>0</span>
+								<span>{CartStore.count()}</span>
 							</div>
 						</div>
 						<div className={styles.cartArrowSection}>

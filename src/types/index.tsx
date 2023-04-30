@@ -6,11 +6,35 @@ type imageData = {
   url: string,
 }
 
+type imagesDataType = Array<
+  { 
+    extension: string,
+    isMain: string,
+    storageRef: string,
+    uid: string,
+    url: string,
+  }
+>
+
 type productType = {
   id: string,
   category: {label: string, value: string},
   description: string,
-  imagesData: Array<imageData>,
+  imageUrls: Array<string>,
+  imagesData: imagesDataType,
+  // imagesData: {
+  //   [key: number]: { 
+  //     extension: string,
+  //     isMain: string,
+  //     storageRef: string,
+  //     uid: string,
+  //     url: string,
+  //   }
+  // },
+  name: string,
+  price: number,
+  quantity: number,
+  cartAmount: number,
   subCategory: {label: string, value: string},
 }
 
@@ -35,4 +59,5 @@ export {
   type subCategoryDataType,
   type categoryDataType,
   type categoriesType,
+  type imagesDataType,
 }

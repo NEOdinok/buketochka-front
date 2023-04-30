@@ -21,10 +21,6 @@ const CheckoutForm: NextPage = () => {
   const [ shipOption, setShipOption ] = useState('')
   const [ shippingAdditional, setShippingAdditional ] = useState('')
 
-	const submitHandler = (event: React.MouseEvent) => {
-		console.log('submit handler');
-  }
-
 	return (
 		<form className={styles.checkoutForm}>
 			<div className={styles.socialSection}>

@@ -4,22 +4,32 @@ import Image from 'next/image';
 import cn from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { productType, imagesDataType } from '@/types';
+import { useEffect } from 'react';
 
 interface Props {
-
+	product: productType,
 }
 
-const CartCard = () => {
+const CartCard: React.FC<Props> = ({ product }) => {
 	const placeholderImg = "https://firebasestorage.googleapis.com/v0/b/buketochka-quasar-backend.appspot.com/o/images%2Fb467ea5a-4538-4b9b-b0e0-9f1c8ae6f3b5.jpg?alt=media&token=91c2ff69-ed08-45db-a945-61e6dfdf58b7"
+
+	useEffect(() => {
+		console.log('data in card:', product);
+	})
+
 	return (
 		<div className={styles.cartCard}>
 			<div className={styles.imageSection}>
-				<img src={placeholderImg} className={styles.mainImg} alt="no image" />
+				<img
+					src={product.imagesData.filter(img => img.isMain === "true")[0].url}
+					className={styles.mainImg} alt="no image"
+				/>
 			</div>
 
 			<div className={styles.infoSection}>
-				<h1 className={styles.productName}>Test Name</h1>
-				<h1 className={styles.productPrice}>1050 ₽</h1>
+				<h1 className={styles.productName}>{product.name}</h1>
+				<h1 className={styles.productPrice}>{product.price} ₽</h1>
 
 				<div className={styles.amountSelector}>
 					<button className={styles.amountBtn}>

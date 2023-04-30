@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import { useRouter } from 'next/router';
+import cn from 'classnames';          
 import {
   getDocs,
   getDoc,
@@ -9,6 +9,15 @@ import {
 } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
 import { NextPage } from 'next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
+import CartStore from '@/stores/CartStore';
+import { observer } from 'mobx-react-lite';
+import { productType } from '@/types';
+import ProductPreview from '@/comps/app/ProductPreview/ProductPreview';
+
 
 interface productProps {
   data: DocumentData;
@@ -16,7 +25,7 @@ interface productProps {
 
 export const getStaticPaths = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'products'));
+    const querySnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'products'));
     const paths: Array<{ params: { id: string } }> = [];
     querySnapshot.forEach((productDoc) =>
       paths.push({
@@ -35,8 +44,19 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   try {
     const id = context.params.id;
-    const documentData = await getDoc(doc(db, 'products', `${id}`));
-    const data = documentData.data();
+    const documentData = await getDoc(doc(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'products', `${id}`));
+    const data = {
+      cartAmount: 0,
+      category: documentData.data()?.category,
+      description: documentData.data()?.description,
+      id: documentData.id,
+      imageUrls: documentData.data()?.imageUrls,
+      imagesData: documentData.data()?.imagesData,
+      name: documentData.data()?.name,
+      price: +documentData.data()?.price,
+      quantity: +documentData.data()?.quantity,
+      subCategory: documentData.data()?.subCategory,
+    }
 
     return {
       props: { data },
@@ -46,10 +66,14 @@ export const getStaticProps = async (context: any) => {
   }
 };
 
-const Bouquet: NextPage<productProps> = ({ data }) => {
+const Set: NextPage<productProps> = ({ data }) => {
+  const imgUrlsArray: Array<string> = data.imageUrls;
+  const mainImgUrl = imgUrlsArray[0];
+  const [mainImg, setMainImg] = useState(imgUrlsArray[0]);
+
 	return (
-		<h1>Empty</h1>
+    <ProductPreview product={data as productType} />
 	);
 }
  
-export default Bouquet;
+export default observer(Set);

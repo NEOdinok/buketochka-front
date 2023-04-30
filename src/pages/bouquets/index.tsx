@@ -5,20 +5,22 @@ import styles from './styles.module.scss';
 import ProductCard from '@/comps/app/ProductCard/ProductCard';
 import { getDocs, collection, DocumentData } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
-import { productType, imageData } from '@/types';
 import UIStore from '@/stores/UIStore';
 import { observer } from 'mobx-react-lite';
+import { productType } from '@/types';
 
 interface staticProps {
-  products: DocumentData[];
+  products: Array<productType>;
 }
 
 export const getStaticProps = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'products'));
-    const products: DocumentData[] = [];
-    querySnapshot.forEach((productDoc) => {
-      products.push({ ...productDoc.data(), id: productDoc.id });
+    const products: Array<productType> = [];
+    querySnapshot.forEach(productDoc => {
+      if (productDoc.data().category.label == 'букеты') {
+        products.push({ ...productDoc.data(), id: productDoc.id } as productType);
+      }
     });
     return {
       props: {
@@ -40,6 +42,7 @@ const BouqetsPage: NextPage<staticProps> = ({ products }) => {
           id={product.id}
           key={product.id}
           page={'bouquets'}
+          product={product}
         />
       )
     );
