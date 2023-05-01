@@ -1,6 +1,10 @@
 @import '/src/styles/breakpoints';
 @import '/src/styles/vars';
 
+.test {
+	font-size: 4rem;
+}
+
 .sets {
 	position: relative;
 	display: block;

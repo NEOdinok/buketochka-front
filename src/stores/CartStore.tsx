@@ -14,7 +14,44 @@ class CartStore {
   }
 
   count = () => {
-    return this.products.length;
+    if (this.products.length) {
+      return this.products.reduce((acc, obj) => (acc + obj.cartAmount), 0);
+    } else {
+      return  0;
+    }
+  }
+
+  hasProduct = (id: string) => {
+    return this.products.filter(product => product.id === id).length > 0
+  }
+
+  amountOf = (id: string) => {
+    if (this.hasProduct(id)) {
+      return this.getProductById(id).cartAmount;
+    } else {
+      return 0;
+    }
+  }
+
+  getProductById = (id: string) => {
+    return this.products.filter(product => product.id === id)[0];
+  }
+
+  removeProduct = (id: string) => {
+    if (!this.getProductById(id)) {
+      return;
+    }
+    this.products = this.products.filter(product => product.id !== id);
+  }
+
+  decrementUntilRemove = (id: string) => {
+    if (!this.hasProduct(id)) {
+      return;
+    } else if (this.getProductById(id).cartAmount < 2) {
+      this.removeProduct(id)
+      return
+    }
+    this.products.filter(product => product.id === id)[0].cartAmount--;
   }
 
 	constructor() {

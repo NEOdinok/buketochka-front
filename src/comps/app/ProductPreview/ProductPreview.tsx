@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import CartStore from '@/stores/CartStore';
 import { observer } from 'mobx-react-lite';
 import { productType } from '@/types';
+import CartStore from '@/stores/CartStore';
 
 interface productProps {
   product: productType;
@@ -51,11 +51,22 @@ const Set: NextPage<productProps> = ({ product }) => {
         </div>
 
         <div className={styles.amountSelector}>
-          <button className={styles.amountBtn}>
+          <button
+            className={styles.amountBtn}
+            onClick={
+              CartStore.amountOf(product.id) > 0 ?
+              () => { CartStore.incrementCartAmountOf(product.id) }
+              :
+              () => { CartStore.addProduct(product) }
+            }
+          >
             <FontAwesomeIcon className={styles.btnIcon} icon={faPlus}/>
           </button>
-          <span className={styles.amount}>2</span>
-          <button className={styles.amountBtn}>
+          <span className={styles.amount}>{CartStore.amountOf(product.id)}</span>
+          <button
+            className={styles.amountBtn}
+            onClick={ () => CartStore.decrementUntilRemove(product.id) }
+          >
             <FontAwesomeIcon className={styles.btnIcon} icon={faMinus}/>
           </button>
           <button

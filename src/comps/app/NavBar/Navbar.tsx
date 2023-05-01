@@ -16,7 +16,6 @@ const Navbar: React.FC = observer(() => {
 
 	const getNavbarData = async () => {
 		const tempCategories: categoriesType = [];
-		// console.log('[function start] categories:', categories);
 
 		try {
 			const categoriesSnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'categories'));
@@ -39,18 +38,15 @@ const Navbar: React.FC = observer(() => {
 			)
 
 			setCategories(tempCategories);
-			// console.log('[after setState inside function] categories:', categories)
 		} catch (error) {
-			console.warn({error});
+			// console.warn({error});
+			throw new Error(`error`);
 		}
 	}
 
 	useEffect(() => {
-		// console.log('useEffect ran');
-		!categories.length && getNavbarData();
-		// console.log('[after function] categories:', categories)
-		categories.length && UIStore.toggleIsLoading();
-	}, [categories]);
+		getNavbarData().finally(() => UIStore.toggleIsLoading());
+	}, []);
 
 	const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
 		subcategories.map(

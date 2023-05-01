@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import Image from "next/image";
 import CartCard from "@/comps/app/CartCard/CartCard";
 import CartStore from "@/stores/CartStore";
+import { observer } from "mobx-react-lite";
 
 const renderCartCards = () => (
 	CartStore.products.map(product =>
@@ -24,4 +25,4 @@ const Cart: NextPage = () => {
 	);
 }
  
-export default Cart;
+export default observer(Cart);
