@@ -20,6 +20,10 @@
 	}
 }
 
+.inCartCheck {
+	color: #fff;
+}
+
 .imageSection,
 .textSection {
 	position: relative;
@@ -29,7 +33,7 @@
 	width: 100%;
 	object-fit: cover;
 	height: 35.5rem;
-	border-radius: 2rem;
+	border-radius: 2rem 2rem 0 0;
 }
 
 .lowerSection {
@@ -61,6 +65,10 @@
 	outline: none;
 	border: none;
 	border-radius: 50rem;
+}
+
+.inCartBtn {
+	background-color: #00e085;
 }
 
 .btnIcon {

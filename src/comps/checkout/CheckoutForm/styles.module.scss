@@ -1,49 +1,37 @@
 @import '/src/styles/vars';
 @import '/src/styles/breakpoints';
 
-
-.socialSection {
-	position: relative;
+.recieverSection {
 	display: flex;
+	position: relative;
 	justify-content: center;
 	width: 100%;
 }
 
+.deliverySection {
+}
+
+.recieverData {
+	max-width: 40rem;
+	width: 100%;
+}
+
 @include desktop {
-	.checkoutForm {
-		padding: 10rem 0;
-	}
-
-	.socialSection {
-		gap: 3rem;
-	}
-
 	.recieverSection {
-		min-width: 42rem;
-		width: 40%;
+		gap: 3rem;
 	}
 }
 
 @include mobileAndTablet {
-	.socialSection {
+	.recieverSection {
 		flex-direction: column;
 		align-items: center;
-	}	
+	}
 }
 
 @include mobile {
 	.recieverSection {
-		width: 85%;
+		padding: 0 2rem;
 	}
 }
 
-@include tablet {
-	.socialSection {
-		gap: 2rem;
-	}
-
-	.recieverSection {
-		width: 50%;
-		min-width: 45rem;
-	}
-}

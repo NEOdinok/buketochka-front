@@ -1,0 +1,67 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.btnPosition {
+	position: fixed;
+	bottom: 5rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+}
+
+.btnInnerWrap {
+	position: relative;
+	display: flex;
+	background-color: #f3f7f8;
+	min-width: 35rem;
+	justify-content: space-between;
+	border-radius: 1.5rem;
+	border: 2px solid #f3f7f8;
+	padding: 1rem 2rem;
+	box-shadow: $shadow;
+	transition: box-shadow 150ms, border 150ms; 
+
+	&:hover {
+		border: 2px solid $active-color;
+		box-shadow: none;
+	}
+}
+
+.textSection {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.header,
+.mainText {
+	// text-transform: uppercase;
+	color: #404040;
+}
+
+.header {
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.mainText {
+	font-size: 1.8rem;
+}
+
+.imgSection,
+.imgWrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgWrap {
+	background-color: #f3f7f8;
+	border-radius: 1.5rem;
+}
+
+.icon {
+	font-size: 3rem;
+	color: $active-color;
+}

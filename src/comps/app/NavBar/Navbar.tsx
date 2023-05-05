@@ -3,14 +3,14 @@ import { ReactNode, useEffect } from 'react';
 import cn from "classnames"
 import { useState } from 'react';
 import { useRouter } from "next/router";
-import { observer } from 'mobx-react-lite';
 import { getDocs, collection, DocumentData } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
 import { subCategoryDataType, categoriesType, categoryDataType } from '@/types';
 import UIStore from '@/stores/UIStore';
 import CartStore from '@/stores/CartStore';
+import { observer } from 'mobx-react-lite';
 
-const Navbar: React.FC = observer(() => {
+const Navbar: React.FC = () => {
 	const router = useRouter();
 	const [categories, setCategories] = useState<categoriesType>([]);
 
@@ -106,9 +106,9 @@ const Navbar: React.FC = observer(() => {
 			</div>
 		</nav>
 	);
-})
+}
  
-export default Navbar;
+export default observer(Navbar);
 
 /*
 	<div className={ cn(router.pathname == '/' ? styles.active : undefined, styles.navItem)}

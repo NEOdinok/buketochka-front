@@ -32,11 +32,19 @@
 .cartBtn {
 	height: 5rem;
 	border-radius: 1rem;
-	background-color: #00e085;
-	color: white;
 	padding: 0 1rem;
 	margin-left: .5rem;
+	color: white;
 	text-transform: uppercase;
+	min-width: 9.7rem;
+}
+
+.greenBtn {
+	background-color: #00e085;
+}
+
+.redBtn {
+	background-color: #fd5949;
 }
 
 .header {

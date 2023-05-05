@@ -22,7 +22,7 @@ interface Props {
   children: ReactNode,
 }
 
-const MainLayout: React.FC<Props> = observer(({children}) => {
+const MainLayout: React.FC<Props> = ({children}) => {
   return (
     <>
 			<SiteHeader />
@@ -35,6 +35,6 @@ const MainLayout: React.FC<Props> = observer(({children}) => {
       <SiteFooter />
     </>
   )
-})
+}
 
-export default MainLayout;
+export default observer(MainLayout);

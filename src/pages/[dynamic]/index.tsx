@@ -23,7 +23,7 @@ export async function getServerSideProps(context: any) {
 		const products: Array<productType> = [];
 		querySnapshot.forEach(productDoc => {
       if (productDoc.data().category.label === `${param}`) {
-        products.push({ ...productDoc.data(), id: productDoc.id } as productType);
+        products.push({ ...productDoc.data(), id: productDoc.id, cartAmount: 0 } as productType);
       }
 		});
 		return {

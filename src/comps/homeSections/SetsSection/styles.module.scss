@@ -102,8 +102,11 @@
 }
 
 @include mobile{
+	.header {
+		font-size: 3.5rem;
+	}
 	.active .rightSet {
-		top: -130%;
+		top: -100%;
 		width: 30vw;
 	}
 	

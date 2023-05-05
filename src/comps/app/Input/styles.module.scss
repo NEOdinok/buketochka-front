@@ -34,7 +34,12 @@
     display: none;
     color: transparent;
   }
+}
 
+.errorMessage {
+  display: inline-block;
+  color: red;
+  font-size: 1rem;
 }
 
 .label {

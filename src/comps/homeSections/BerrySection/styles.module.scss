@@ -2,12 +2,22 @@
 @import '/src/styles/vars';
 
 .berrySection {
-	display: block;
+	padding: 0 2rem;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 90vh;
+	justify-content: center;
+	margin: 50vh 0;
+}
+
+.content {
+	margin-top: 10rem;
+	position: relative;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	max-width: 100rem;
 }
 
 .header,
@@ -28,13 +38,7 @@
 	line-height: 110%;
 }
 
-.content {
-	margin-top: 10rem;
-	position: relative;
-	display: flex;
-	width: 100%;
-	align-items: center;
-}
+
 
 .imageContainer,
 .textContainer {
@@ -48,17 +52,18 @@
 
 
 .image {
-	position: absolute;
+	position: relative;
 	left: 0;
 	opacity: 0;
-	transition: all 700ms ease-in;
+	transform: translateX(-30rem);
+	transition: all 600ms ease-in;
 }
 
 .active .image {
-	left: 20vw;
+	transform: none;
 	opacity: 1;
-
 }
+
 
 .text {
 	text-align: center;
@@ -75,10 +80,15 @@
 		height: 70vh;
 		flex-direction: row;
 	}
+
 }
 
 @include mobileAndTablet {
 	.content {
 		height: 90vh;
+	}
+
+	.content {
+		flex-direction: column;
 	}
 }

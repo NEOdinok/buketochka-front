@@ -1,24 +1,59 @@
 import { useState } from 'react';
+import { FormikErrors } from 'formik';
 import styles from './styles.module.scss'
 import cn from "classnames";
-import InputField from '@/comps/app/InputField/InputField';
+import Input from '@/comps/app/Input/Input';
 
 interface Props {
-	setShipOption: React.Dispatch<React.SetStateAction<string>>,
-	setShippingAdditional: React.Dispatch<React.SetStateAction<string>>,
+	values: {
+    name: string,
+    email: string,
+    phone: string,
+    additional: string,
+    contactOption: string,
+    deliveryDate: string,
+    deliveryOption: string,
+    deliveryAdditional: string,
+	},
+	errors: FormikErrors<{
+    name: string;
+    email: string;
+    phone: string;
+    additional: string;
+    contactOption: string;
+    deliveryDate: string;
+    deliveryOption: string;
+    deliveryAdditional: string;
+	}>,
+	name: string,
+	setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+	className: string,
 }
 
-const ShippingOptions: React.FC<Props> = ({ setShipOption, setShippingAdditional}) => {
-	const [selected, setSelected] = useState('');
-
+const ShippingOptions: React.FC<Props> = ({
+	values,
+	setFieldValue,
+	className,
+	name,
+	errors,
+}) => {
 	return (
 		<div className={styles.shippingOptions}>
-			<h1 className={styles.header}>Способ доставки</h1>
+			{errors.deliveryOption? 
+				<div className={cn(styles.headerError, styles.header)}>
+					Дата доставки*
+				</ div>
+
+				:
+				<div className={styles.header}>
+					Способ доставки
+				</ div>
+			}
 			<div className={styles.optionCards}>
 
 				<div
-					onClick={() => {setSelected('pickup'); setShipOption('pickup')}} 
-					className={ cn(styles.option, selected === 'pickup'? styles.active: '') }
+					onClick={() => setFieldValue(name, 'pickup')} 
+					className={ cn(styles.option, values.deliveryOption === 'pickup'? styles.active: '') }
 				>
 					<div className={styles.optionNameAndPriceSection}>
 						<span className={cn(styles.optionName, styles.optionText)}>Самовывоз из г. Видное</span>
@@ -30,8 +65,8 @@ const ShippingOptions: React.FC<Props> = ({ setShipOption, setShippingAdditional
 				</div>
 
 				<div 
-					onClick={() => {setSelected('delivery'); setShipOption('delivery')}} 
-					className={ cn(styles.option, selected === 'delivery'? styles.active: '') }
+					onClick={() => setFieldValue(name, 'delivery')} 
+					className={ cn(styles.option, values.deliveryOption === 'delivery'? styles.active: '') }
 				>
 					<div className={styles.optionNameAndPriceSection}>
 						<span className={cn(styles.optionName, styles.optionText)}>Доставка</span>
@@ -43,18 +78,16 @@ const ShippingOptions: React.FC<Props> = ({ setShipOption, setShippingAdditional
 				</div>
 			</div>
 
-      { selected === 'delivery' && 
+      { values.deliveryOption === 'delivery' && 
 			<div className={ styles.additionalDeliveryInfoSection}>
-				<span className={styles.deliveryInfoHeader}>Дополнительная информация о доставки</span>
-				{/* <Input setState={setDescription} id="address" labelText="Адрес доставки* " type="text" description="" textinput={ true } /> */}
-				<InputField
-					setState={setShippingAdditional}
-					className={styles.additionalInput}
+				<span className={styles.deliveryInfoHeader}>Дополнительная информация о доставке</span>
+				<Input
 					id="address"
-					labelText="Адрес доставки* "
+          name="deliveryAdditional"
 					type="text"
-					placeholder=""
+					className={styles.additionalInput}
 					isTextArea={true}
+          label="Дополнительно о доставке: "
 				/>
       </div> }
 		</div>

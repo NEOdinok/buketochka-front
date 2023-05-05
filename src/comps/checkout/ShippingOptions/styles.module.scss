@@ -5,6 +5,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 5rem 0;
 }
 
 .optionText {
@@ -23,9 +24,14 @@
 .header {
 	letter-spacing: 2px;
 	font-weight: 700;
-	font-size: 3.5rem;
+	font-size: 4rem;
+	color: #313131;
 	text-align: center;
 	margin-bottom: 6rem;
+}
+
+.headerError {
+	color: red;
 }
 
 .optionCards {
@@ -97,7 +103,21 @@
 	width: 40rem;
 }
 
+@include desktop {
+	.mobileBreak {
+		display: none;
+	}
+
+	.header {
+		font-size: $checkout-header-small;
+	}
+}
+
 @include mobileAndTablet {
+	.header {
+		font-size: $checkout-header-big;
+	}
+
 	.optionCards {
 		flex-direction: column;
 		gap: 2rem;

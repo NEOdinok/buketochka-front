@@ -1,52 +1,112 @@
 import { NextPage } from "next";
 import styles from './styles.module.scss';
-import { useState } from "react";
-import RecieverData from "../RecieverData/RecieverData";
+import { Formik, FormikHelpers, Form } from 'formik';
+import { observer } from "mobx-react-lite";
 import ContactOptions from "../ContactOptions/ContactOptions";
 import DeliveryDate from "../DeliveryDate/DeliveryDate";
 import ShippingOptions from "../ShippingOptions/ShippingOptions";
+import RecieverData from "../RecieverData/RecieverData";
+import SubmitBtn from "@/comps/app/SubmitBtn/SubmitBtn";
+import * as Yup from 'yup';
+
+interface FormValues {
+	name: string,
+	email: string,
+	phone: string,
+	additional: string,
+	contactOption: string,
+	deliveryDate: string,
+	deliveryOption: string,
+	deliveryAdditional: string,
+}
+
+const OrderSchema = Yup.object().shape({
+  name: Yup.string()
+    .required('Введите ваше имя')
+		.min(2, 'Имя должно быть минимум 2 символа'),
+	email: Yup.string()
+		.email('Введите верный email')
+		.required('Заполните email'),
+	phone: Yup.string()
+		.required("Введите ваш номер")
+		.min(16, 'Введите номер полностью'),
+	contactOption: Yup.string()
+    .required('Выберите метод связи'),
+	deliveryDate: Yup.string()
+		.required('Введите дату доставки'),
+	deliveryOption: Yup.string()
+		.required('Выберите способ доставки'),
+});
 
 const CheckoutForm: NextPage = () => {
-	const [ valid, setValid ] = useState(false)
-	//RecieverData
-  const [ phone, setPhone ] = useState('')
-  const [ email, setEmail ] = useState('')
-  const [ name, setName ] = useState('')
-  const [ additional, setAdditional ] = useState('')
-	//Contact 
-  const [ contact, setContact ] = useState('')
-	//Delivery
-  const [ date, setDate ] = useState('')
-	//Shipping options
-  const [ shipOption, setShipOption ] = useState('')
-  const [ shippingAdditional, setShippingAdditional ] = useState('')
+	const handleSubmit = (
+    values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>
+  ) => {
+    console.log('Form values:', values);
+    setSubmitting(false);
+  };
 
 	return (
-		<form className={styles.checkoutForm}>
-			<div className={styles.socialSection}>
-				<RecieverData
-					setPhone={ setPhone }
-					setEmail={ setEmail }
-					setName={ setName }
-					setAdditional={ setAdditional }
-					className={styles.recieverSection}
-				/>
-				<ContactOptions 
-					contact={ contact }
-					setContact={ setContact } 
-					className={styles.recieverSection}
-				/>
-			</div>
+    <Formik
+      initialValues={{ 
+				name: '',
+				email: '',
+				phone: '',
+				additional: '',
+				contactOption: '',
+				deliveryDate: '',
+				deliveryOption: '',
+				deliveryAdditional: '',
+			}}
+      validationSchema={ OrderSchema }
+      onSubmit={handleSubmit}
+			clasName={styles.checkoutForm}
+    >
+      {({ isSubmitting, values, setFieldValue, errors }) => (
+        <Form>
+					<div className={styles.recieverSection}>
+						<RecieverData
+							setFieldValue={setFieldValue}
+							values={values}
+							className={styles.recieverData}
+							errors={errors}
+						/>
 
-			<div className={styles.deliverySection}>
-				<DeliveryDate setDate={setDate} />
-				<ShippingOptions
-					setShippingAdditional = { setShippingAdditional}
-					setShipOption={setShipOption}
-				/>
-			</div>
-		</form>
+						<ContactOptions 
+							setFieldValue={setFieldValue}
+							values={values}
+							className={styles.recieverData}
+							errors={errors}
+						/>
+					</div>
+
+					<div className={styles.deliverySection}>
+						<DeliveryDate 
+							values={values}
+							name="deliveryDate"
+							setFieldValue={setFieldValue}
+							className=""
+							errors={errors}
+						/>
+
+						<ShippingOptions
+							values={values}
+							name="deliveryOption"
+							setFieldValue={setFieldValue}
+							className=""
+							errors={errors}
+						/>
+					</div>
+
+  
+					<SubmitBtn 
+						type="submit"
+					/>
+        </Form>
+      )}
+    </Formik>
 	);
 }
  
-export default CheckoutForm;
+export default observer(CheckoutForm);

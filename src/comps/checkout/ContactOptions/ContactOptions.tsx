@@ -1,43 +1,94 @@
 import styles from './styles.module.scss';
 import RadioBtn from '@/comps/app/RadioBtn/RadioBtn';
 import { faTelegram } from '@fortawesome/free-brands-svg-icons';
+import { Field, FormikErrors } from 'formik';
 import cn from 'classnames';
 
 interface Props {
-  contact: string,
-  setContact: React.Dispatch<React.SetStateAction<string>>,
-	className?: string,
+	values: {
+    name: string,
+    email: string,
+    phone: string,
+    additional: string,
+    contactOption: string,
+    deliveryDate: string;
+    deliveryOption: string,
+    deliveryAdditional: string,
+	},
+	errors: FormikErrors<{
+    name: string;
+    email: string;
+    phone: string;
+    additional: string;
+    contactOption: string;
+    deliveryDate: string;
+    deliveryOption: string;
+    deliveryAdditional: string;
+	}>,
+	setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+	className: string,
 }
 
-const ContactOptions: React.FC<Props> = ({contact, setContact, className}) => {
+const ContactOptions: React.FC<Props> = ({
+	setFieldValue,
+	values,
+	className,
+	errors,
+}) => {
 	return (
 		<div className={cn(styles.contactOptions, className)}>
-			<div className={styles.header}>Как с вами связаться ?</div>
-				<RadioBtn
-					active={contact}
-					setActive={setContact}
+			{errors.contactOption? 
+				<div className={cn(styles.headerError, styles.header)}>
+					Как с вами<br className={styles.mobileBreak} /> связаться ?*
+				</ div>
+
+				:
+				<div className={styles.header}>
+					Как с вами<br className={styles.mobileBreak} /> связаться ?
+				</ div>
+			}
+				<Field
+					as={RadioBtn}
+					id="viber"
+					name="contactOption"
+					value="viber"
+					setFieldValue={setFieldValue}
+					values={values}
+					description="Написать в Viber "
+					icon="fab fa-viber"
+				/>
+
+				<Field
+					as={RadioBtn}
+					id="telegram"
+					name="contactOption"
+					value="telegram"
+					setFieldValue={setFieldValue}
+					values={values}
 					description="Написать в Telegram"
 					icon="fab fa-telegram"
-					id="telegram"
 				/>
-				<RadioBtn
-					active={ contact }
-					setActive={ setContact }
+
+				<Field
+					as={RadioBtn}
+					id="whats"
 					description="Написать в Whats App "
-					icon="fab fa-whatsapp" id="whats"
+					icon="fab fa-whatsapp"
+					name="contactOption"
+					value="whats"
+					setFieldValue={setFieldValue}
+					values={values}
 				/>
-        <RadioBtn
-					active={ contact }
-					setActive={ setContact }
-					description="Написать в Viber "
-					icon="fab fa-viber" id="viber"
-				/>
-        <RadioBtn
-					active={ contact }
-					setActive={ setContact }
+
+				<Field
+					as={RadioBtn}
 					description="Позвонить мне "
 					icon="fas fa-phone-volume"
 					id="phone"
+					name="contactOption"
+					value="phone"
+					setFieldValue={setFieldValue}
+					values={values}
 				/>
 		</div>
 	);

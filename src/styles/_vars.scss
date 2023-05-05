@@ -6,6 +6,8 @@ $opacity-background: whitesmoke;
 $shadow: 10px 10px 30px #CCC;
 $active-color: #30C5FF;
 $light-grey: rgba(0, 0, 0, 0.25);
+$active-green: #00e085;
+$black-text: #313131;
 
 //header
 $header-padding: 4.5rem;
@@ -20,3 +22,7 @@ $navbar-red: #fd5949;
 $buketochka-red: #fd5949;
 $cart-width: 8.4rem;
 $sub-item-padding: 2.5rem 6.5rem 2.5rem 3rem;
+
+//checkout stuff
+$checkout-header-big: 4rem;
+$checkout-header-small: 3rem;

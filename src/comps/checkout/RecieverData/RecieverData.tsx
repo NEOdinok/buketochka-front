@@ -1,23 +1,70 @@
-import InputField from "@/comps/app/InputField/InputField";
 import styles from './styles.module.scss';
 import cn from 'classnames';
+import Input from "@/comps/app/Input/Input";
+import { FormikErrors } from 'formik';
 
 interface Props {
-  setPhone: React.Dispatch<React.SetStateAction<string>>
-  setName: React.Dispatch<React.SetStateAction<string>>
-  setEmail: React.Dispatch<React.SetStateAction<string>>
-  setAdditional: React.Dispatch<React.SetStateAction<string>>
-  className?: string,
+	values: {
+    name: string,
+    email: string,
+    phone: string,
+    additional: string,
+    contactOption: string,
+    deliveryDate: string,
+    deliveryOption: string,
+    deliveryAdditional: string,
+	},
+  errors: FormikErrors<{
+    name: string;
+    email: string;
+    phone: string;
+    additional: string;
+    contactOption: string;
+    deliveryDate: string;
+    deliveryOption: string;
+    deliveryAdditional: string;
+  }>,
+	setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+	className: string,
 }
 
-const RecieverData: React.FC<Props> = ({ setPhone, setName, setEmail, setAdditional, className }) => {
+const RecieverData: React.FC<Props> = ({
+  className,
+  values,
+  errors,
+  setFieldValue,
+}) => {
 	return ( 
 		<div className={cn(styles.recieverData, className)}>
-			<h1 className={styles.header}>Кому подарок ?</h1>
-      <InputField setState={ setPhone } placeholder="test" id="phone" type="tel" labelText="Ваш номер телефона* " />
-      <InputField setState={ setEmail } placeholder="test" id="email" type="text" labelText="Почта* " />
-      <InputField setState={ setName } placeholder="test" id="name" type="text" labelText="Ваше имя* " />
-      <InputField setState={ setAdditional } placeholder="" id="comment" type="text" labelText="Пожелания к заказу " isTextArea={ true } />
+			<h1 className={styles.header}>Кому <br className={styles.mobileBreak} />подарок ?</h1>
+        <Input
+          type="name"
+          name="name"
+          id="name"
+          label="Ваше имя: "
+        />
+
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          label="Ваш Email: "
+        />
+
+        <Input
+          type="phone"
+          name="phone"
+          id="phone"
+          label="Ваш телефон: "
+        />
+
+        <Input
+          type="additional"
+          name="additional"
+          id="additional"
+          label="Дополнительно: "
+          isTextArea={true}
+        />
 		</div>
 	);
 }

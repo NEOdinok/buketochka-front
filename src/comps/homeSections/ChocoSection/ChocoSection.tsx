@@ -18,9 +18,8 @@ const ChocoSection= forwardRef<HTMLElement, Props>((props, ref) => {
 				<div className={styles.textContainer}>
 					<p className={styles.text}>Бельгийский<br />шоколад</p>
 				</div>
-				<div className={styles.imageContainer}>
-					<Image className={styles.image} src={chocoImg} alt="" />
-				</div>
+
+				<Image className={styles.image} src={chocoImg} alt="" />
 			</div>
 		</section>
 	);

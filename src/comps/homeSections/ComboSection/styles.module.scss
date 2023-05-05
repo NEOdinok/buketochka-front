@@ -2,14 +2,17 @@
 @import '/src/styles/vars';
 
 .chocoSection {
-	display: block;
 	position: relative;
 	background-color: #d0b6e3;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 	height: 110vh;
 	min-height: 70rem;
 }
 
 .content {
+	max-width: 120rem;
 	position: relative;
 	height: 100%;
 	display: flex;
@@ -51,11 +54,41 @@
 
 .active .image {
 	opacity: 1;
-	right: -35%;
-	bottom: -40%;
+	right: -60vh;
+	bottom: -60vh;
 	transform: scale(.6);
 }
 
 .active .text {
 	opacity: 1;
+}
+
+@include mobileAndTablet {
+	.content {
+		flex-direction: column;
+	}
+
+	.textContainer {
+		position: relative;
+		height: 100%;
+		flex: 1;
+	}	
+}
+
+@include tablet {
+	.active .image {
+		opacity: 1;
+		right: -45%;
+		bottom: -40%;
+		transform: scale(.6);
+	}
+}
+
+@include mobile {
+	.active .image {
+		opacity: 1;
+		right: -90vw;
+		bottom: -40%;
+		transform: scale(.6);
+	}
 }

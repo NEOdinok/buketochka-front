@@ -1,19 +1,22 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
 .footer {
 	position: relative;
 	display: flex;
 	align-items: center;
-	// gap: 4rem;
 	justify-content: space-between;
-	padding: 3rem;
+	padding: 3rem 0;
 	width: 100%;
 	background-color: #fff;
+	padding: 2rem;
 }
 
 .header {
 	color: #414141;
 	padding: 4rem 0;
-	font-size: 4rem;
 	font-weight: 700;
+	text-align: center;
 }
 
 .linksContainer {
@@ -43,4 +46,21 @@
 
 .whatsappIcon {
 	color: #00e676;
+}
+
+@include desktop {
+	.header {
+		font-size: 4rem;
+	}
+}
+
+@include mobileAndTablet {
+	.header {
+		font-size: 3rem;
+	}
+
+	.footer {
+		flex-direction: column;
+	}
+
 }

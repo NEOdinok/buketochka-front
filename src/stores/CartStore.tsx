@@ -10,7 +10,8 @@ class CartStore {
   }
 
   incrementCartAmountOf = (id: string) => {
-    this.products.filter(product => product.id === id)[0].cartAmount++;
+    // this.products.filter(product => product.id === id)[0].cartAmount++;
+    this.getProductById(id).cartAmount++;
   }
 
   count = () => {
@@ -18,6 +19,16 @@ class CartStore {
       return this.products.reduce((acc, obj) => (acc + obj.cartAmount), 0);
     } else {
       return  0;
+    }
+  }
+
+  totalPrice = () => {
+    if (this.products.length) {
+      return this.products.reduce((acc, obj) => (
+        acc + obj.price * obj.cartAmount
+      ), 0);
+    } else {
+      return 0;
     }
   }
 

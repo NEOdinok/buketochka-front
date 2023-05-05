@@ -18,9 +18,8 @@ const ComboSection = forwardRef<HTMLElement, Props>((props, ref) => {
 				<div className={styles.textContainer}>
 					<p className={styles.text}>И их безупречное<br />сочетание</p>
 				</div>
-				<div className={styles.imageContainer}>
-					<Image className={styles.image} src={comboImage} alt="" />
-				</div>
+
+				<Image className={styles.image} src={comboImage} alt="" />
 			</div>
 		</section>
 	);

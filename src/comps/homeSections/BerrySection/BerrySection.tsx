@@ -16,11 +16,11 @@ const BerrySection = forwardRef<HTMLElement, Props>((props, ref) => {
 			<h2 className={styles.header}>Почему это</h2>
 			<p className={styles.subHeader}>отличный подарок</p>
 			<div className={styles.content}>
-				<div className={styles.imageContainer}>
-					<Image className={styles.image} src={BerryImg} alt="" />
-				</div>
 				<div className={styles.textContainer}>
 					<p className={styles.text}>свежая<br />клубника</p>
+				</div>
+				<div className={styles.imageContainer}>
+					<Image className={styles.image} src={BerryImg} alt="" />
 				</div>
 			</div>
 		</section>
