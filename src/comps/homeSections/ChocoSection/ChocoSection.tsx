@@ -1,28 +1,29 @@
-import styles from './styles.module.scss'
-import { forwardRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import chocoImg from 'public/img/chocko1.png';
+import { forwardRef } from 'react';
 import cn from 'classnames';
+import styles from './styles.module.scss';
 
 interface Props {
 	className?: string;
   active: boolean;
 }
 
-const ChocoSection= forwardRef<HTMLElement, Props>((props, ref) => {
-	const {active, className} = props;
-
+const BerrySection = forwardRef<HTMLElement, Props>((props, ref) => {
+	const {active} = props;
 	return (
 		<section ref={ref} className={cn(styles.chocoSection, active? styles.active: '')}>
 			<div className={styles.content}>
 				<div className={styles.textContainer}>
-					<p className={styles.text}>Бельгийский<br />шоколад</p>
+					<p className={styles.text}>бельгийский<br />шоколад</p>
 				</div>
 
-				<Image className={styles.image} src={chocoImg} alt="" />
+				<div className={styles.imageContainer}>
+					<Image className={styles.image} src={chocoImg} alt="" />
+				</div>
 			</div>
 		</section>
 	);
 })
  
-export default ChocoSection;
+export default BerrySection;

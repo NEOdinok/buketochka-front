@@ -9,20 +9,20 @@ interface Props {
   active: boolean;
 }
 
-const ComboSection = forwardRef<HTMLElement, Props>((props, ref) => {
-	const {active, className} = props;
-
+const BerrySection = forwardRef<HTMLElement, Props>((props, ref) => {
+	const {active} = props;
 	return (
-		<section ref={ref} className={cn(styles.chocoSection, active? styles.active: '')}>
+		<section ref={ref} className={cn(styles.comboSection, active? styles.active: '')}>
 			<div className={styles.content}>
 				<div className={styles.textContainer}>
-					<p className={styles.text}>И их безупречное<br />сочетание</p>
+					<p className={styles.text}>И их<br />безубречное<br />сочетание</p>
 				</div>
-
-				<Image className={styles.image} src={comboImage} alt="" />
+				<div className={styles.imageContainer}>
+					<Image className={styles.image} src={comboImage} alt="" />
+				</div>
 			</div>
 		</section>
 	);
 })
  
-export default ComboSection;
+export default BerrySection;

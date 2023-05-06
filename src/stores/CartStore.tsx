@@ -7,11 +7,12 @@ class CartStore {
   addProduct = (value: productType) => {
     this.products.push(value);
     this.incrementCartAmountOf(value.id);
+    localStorage.setItem('products', JSON.stringify(this.products));
   }
 
   incrementCartAmountOf = (id: string) => {
-    // this.products.filter(product => product.id === id)[0].cartAmount++;
     this.getProductById(id).cartAmount++;
+    localStorage.setItem('products', JSON.stringify(this.products));
   }
 
   count = () => {
@@ -53,6 +54,7 @@ class CartStore {
       return;
     }
     this.products = this.products.filter(product => product.id !== id);
+    localStorage.setItem('products', JSON.stringify(this.products));
   }
 
   decrementUntilRemove = (id: string) => {
@@ -63,6 +65,7 @@ class CartStore {
       return
     }
     this.products.filter(product => product.id === id)[0].cartAmount--;
+    localStorage.setItem('products', JSON.stringify(this.products));
   }
 
 	constructor() {

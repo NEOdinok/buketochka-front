@@ -17,7 +17,7 @@ interface serverSideProps {
 }
 
 export async function getServerSideProps(context: any) {
-	const param = context.params.dynamic; 
+	const param = context.params.dynamicCategory; 
 	try {
 		const querySnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', `products`));
 		const products: Array<productType> = [];
@@ -43,10 +43,9 @@ const DynamicRoute: NextPage<serverSideProps> = ({ param, products }) => {
   const renderProductCards = () =>
     products.map((product): ReactNode => (
         <ProductCard 
-          name={product.name}
-          price={product.price}
           id={product.id}
           key={product.id}
+          pageType='categories'
           page={param}
           product={product}
         />

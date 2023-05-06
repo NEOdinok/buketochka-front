@@ -2,19 +2,17 @@
 @import '/src/styles/vars';
 
 .chocoSection {
-	position: relative;
 	background-color: #ec4559;
-	width: 100%;
+	position: relative;
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	height: 110vh;
 }
 
 .content {
 	position: relative;
-	max-width: 120rem;
-	height: 100%;
 	display: flex;
+	max-width: 100rem;
 }
 
 .textContainer {
@@ -23,77 +21,48 @@
 	align-items: center;
 }
 
-.textContainer {
-	position: relative;
+.imageContainer {
 	height: 100%;
-	flex: 1;
+	width: 100%;
+	position: relative;
+}
+
+.image {
+	opacity: 0;
+	transform: translateX(-30rem);
+	// transition: opacity 150ms, transform 400ms;
+	transition: all 500ms;
+}
+
+.active .image {
+	transform: none;
+	opacity: 1;
 }
 
 .text {
-	font-size: 4rem;
-	text-shadow: 1px 2px 30px rgba(255, 255, 255, 0.7);
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: 500;
 	line-height: 10rem;
-	opacity: 0;
 	color: white;
 	transition: opacity 750ms ease;
 }
 
-.image {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	opacity: 0;
-	transform: scale(.5);
-	transition: opacity 750ms, transform 700ms;
-}
-
-.active .image {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.active .text {
-	opacity: 1;
+@include desktop {
+	.text {
+		font-size: 4rem;
+	}
 }
 
 @include mobileAndTablet {
+	.text {
+		font-size: 3.5rem;
+	}
+
+	.chocoSection {
+		padding-top: 20rem;
+	}
 	.content {
 		flex-direction: column;
-	}
-
-	.textContainer {
-		position: relative;
-		height: 100%;
-		flex: 1;
-	}	
-}
-
-@include desktop {
-	.active .image {
-		opacity: 1;
-		right: -5vw;
-		bottom: -15%;
-		transform: scale(.9);
-	}
-}
-
-@include tablet {
-	.active .image {
-		opacity: 1;
-		right: -30vw;
-		bottom: -15%;
-		transform: scale(.9);
-	}
-}
-
-@include mobile {
-	.active .image {
-		opacity: 1;
-		right: -40vw;
-		bottom: -15%;
-		transform: scale(.7);
 	}
 }

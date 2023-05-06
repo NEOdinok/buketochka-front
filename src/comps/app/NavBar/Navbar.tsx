@@ -53,7 +53,11 @@ const Navbar: React.FC = () => {
 			(subcategory): ReactNode => (
 				<li
 					className={styles.subItem}
-					onClick={() => { router.push(`/${subcategory.route}`)}}
+					onClick={(e) => { 
+						e.stopPropagation();
+						console.log('pressed SubCategory');
+						router.replace(`/subcategories/${subcategory.route}`)
+					}}
 					key={subcategory.id}
 				>
 					<span>{subcategory.name}</span>
@@ -65,7 +69,7 @@ const Navbar: React.FC = () => {
 		categories.map(
 			(category): ReactNode => (
 				<div className={ cn(router.pathname == `/${category.route}` ? styles.active : undefined, styles.navItem) }
-					onClick={() => { router.push(`/${category.route}`)}}
+					onClick={() => { console.log('pressed category'); router.replace(`/categories/${category.route}`)}}
 					key={category.id}
 				>
 					<span className={styles.navItemText}>{category.name}</span>

@@ -7,6 +7,8 @@ import ComboSection from "@/comps/homeSections/ComboSection/ComboSection";
 import { NextPage } from "next";
 import { useState, useRef, useEffect } from "react";
 import { isInViewport } from "@/utils/homePageUi";
+import CartStore from "@/stores/CartStore";
+import { productType } from "@/types";
 
 const Home: NextPage = () => {
   const [ heroActive, setHeroActive ] = useState(false);
@@ -23,6 +25,7 @@ const Home: NextPage = () => {
   const comboSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+
     document.addEventListener("scroll", (e: Event) => {
       isInViewport(heroSectionRef, setHeroActive);
       isInViewport(setsSectionRef, setSetsActive); 

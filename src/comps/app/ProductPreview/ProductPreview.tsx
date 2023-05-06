@@ -9,6 +9,7 @@ import { observer } from 'mobx-react-lite';
 import { productType } from '@/types';
 import CartStore from '@/stores/CartStore';
 import { toggleIsProductInCart } from '@/utils/utilFunctions';
+import AmountSelector from '../AmountSelector/AmountSelector';
 
 interface productProps {
   product: productType;
@@ -42,40 +43,18 @@ const Set: NextPage<productProps> = ({ product }) => {
       </div>
 
       <div className={styles.infoSection}>
-        <h1 className={styles.productName}>{product.name}</h1>
-        <h1 className={styles.productPrice}>{product.price} ₽</h1>
-        <div className={styles.availability}>
-          <span className={styles.isAvailable}>В наличии</span>
-          <FontAwesomeIcon className={styles.availabilityIcon} icon={faCheckCircle}/>
+        <div className={styles.nameAndPrice}>
+          <h1 className={styles.productName}>{product.name}</h1>
+          <h1 className={styles.productPrice}>{product.price} ₽</h1>
         </div>
 
-        <div className={styles.amountSelector}>
-          <button className={styles.amountBtn}
-            onClick={
-              CartStore.amountOf(product.id) > 0 ?
-              () => { CartStore.incrementCartAmountOf(product.id) }
-              :
-              () => { CartStore.addProduct(product) }
-            }
-          >
-            <FontAwesomeIcon className={styles.btnIcon} icon={faPlus}/>
-          </button>
+        <div className={styles.availabilityAndAmount}>
+          <div className={styles.availability}>
+            <span className={styles.isAvailable}>В наличии</span>
+            <FontAwesomeIcon className={styles.availabilityIcon} icon={faCheckCircle}/>
+          </div>
 
-          <span className={styles.amount}>
-            {CartStore.amountOf(product.id)}
-          </span>
-
-          <button className={styles.amountBtn}
-            onClick={ () => CartStore.decrementUntilRemove(product.id) }
-          >
-            <FontAwesomeIcon className={styles.btnIcon} icon={faMinus}/>
-          </button>
-          <button
-            className={cn(styles.cartBtn, CartStore.hasProduct(product.id)? styles.redBtn: styles.greenBtn)}
-            onClick={(e) => toggleIsProductInCart(e, product)}
-          >
-            {/* В корзину */ CartStore.hasProduct(product.id)? 'Удалить': 'В корзину'}
-          </button>
+          <AmountSelector product={product}/>
         </div>
       </div>
     </div>

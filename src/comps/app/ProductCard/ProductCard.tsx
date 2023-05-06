@@ -10,17 +10,16 @@ import { observer } from 'mobx-react-lite';
 import { toggleIsProductInCart } from '@/utils/utilFunctions';
 
 interface Props {
-	name: string,
-	price: number,
 	id: string,
+	pageType: string,
 	page: string,
 	product: productType, 
 }
 
-const ProductCard: React.FC<Props> = ({ name, price, id, page, product}) => {
+const ProductCard: React.FC<Props> = ({id, page, product, pageType}) => {
 
 	return (
-		 <Link className={styles.productCard} href={`/${page}/${id}`}>
+		 <Link className={styles.productCard} href={`/${pageType}/${page}/${id}`}>
 			<div className={styles.imageSection}>
 				<img 
 					src={product.imagesData.filter(img => img.isMain === "true")[0].url}

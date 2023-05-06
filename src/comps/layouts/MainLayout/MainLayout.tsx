@@ -4,13 +4,12 @@ import cn from "classnames"
 import SiteHeader from "@/comps/app/SiteHeader/SiteHeader";
 import WhiteBackdrop from '@/comps/app/whiteBackdrop/WhiteBackdrop';
 import Navbar from "@/comps/app/NavBar/Navbar";
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Roboto } from 'next/font/google'
-import { getDocs, collection, DocumentData } from 'firebase/firestore';
-import { db } from '@/firebase/clientApp';
-import { categoryDataType, subCategoryDataType, categoriesType } from '@/types';
 import SiteFooter from '@/comps/app/SiteFooter/SiteFooter';
 import { observer } from 'mobx-react-lite';
+import CartStore from '@/stores/CartStore';
+import { productType } from '@/types';
 
 const roboto = Roboto({ 
   subsets: ['latin', 'cyrillic'],
@@ -18,11 +17,20 @@ const roboto = Roboto({
   preload: true,
 })
 
+
+
 interface Props {
   children: ReactNode,
 }
 
 const MainLayout: React.FC<Props> = ({children}) => {
+
+  useEffect(() => {
+    const savedProducts = localStorage.getItem('products');
+    if (savedProducts) CartStore.products = JSON.parse(savedProducts) as productType[];
+    console.log('localhost');
+  }, []);
+
   return (
     <>
 			<SiteHeader />

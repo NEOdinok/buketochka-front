@@ -1,0 +1,53 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.sets {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 2rem;
+}
+
+.cardsContainer {
+	max-width: 120rem;
+	display: grid;
+}
+
+.test {
+	font-size: 4rem;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	font-size: 3.5rem;
+	text-align: center;
+	// text-shadow: 1px 1px 2px rgba(92,81,80,.32);
+	color: #313131;
+	margin: 3.5rem 0 6.5rem 0;
+}
+
+
+
+@include desktop {
+	.cardsContainer {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+	}
+}
+
+@include tablet {
+	.cardsContainer {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
+}
+
+@include mobile {
+	.cardsContainer {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 2rem;
+	}
+}

@@ -8,7 +8,6 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: 50vh 0;
 }
 
 .content {
@@ -38,8 +37,6 @@
 	line-height: 110%;
 }
 
-
-
 .imageContainer,
 .textContainer {
 	position: relative;
@@ -49,7 +46,6 @@
 	justify-content: center;
 	align-items: center;
 }
-
 
 .image {
 	position: relative;
@@ -64,7 +60,6 @@
 	opacity: 1;
 }
 
-
 .text {
 	text-align: center;
 	line-height: 10rem;
@@ -72,20 +67,34 @@
 	color: #343434;
 	letter-spacing: 4px;
 	font-weight: 500;
-	font-size: 4rem;
 }
 
 @include desktop {
+	.text {
+		font-size: 4rem;
+	}
 	.content {
 		height: 70vh;
 		flex-direction: row;
 	}
 
+	.berrySection {
+		margin: 70vh 0;
+	}
+
 }
 
 @include mobileAndTablet {
+	.text {
+		font-size: 3.5rem;
+	}
+
 	.content {
 		height: 90vh;
+	}
+
+	.berrySection {
+		margin: 50vh 0;
 	}
 
 	.content {
