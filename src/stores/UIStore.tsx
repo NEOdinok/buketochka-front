@@ -4,11 +4,15 @@ class CartStore {
 	isMenuOpen = false;
 	isLoading = true;
 
+	setMenuClosed = () => {
+		this.isMenuOpen = false;
+	}
+
 	toggleMenuOpen = () => {
 		this.isMenuOpen = !this.isMenuOpen;
 	}
 
-	toggleIsLoading= () => {
+	toggleIsLoading = () => {
 		this.isLoading = !this.isLoading;
 	}
 

@@ -3,10 +3,22 @@
 
 .deliveryDate {
 	margin: 5rem 0;
+	width: 100%;
 	display: flex;
+	justify-content: center;
+}
+
+.input {
+	width: 100%;
+	margin-top: 2rem;
+}
+
+.deliveryWrap {
+	display: flex;
+	align-items: center;
 	flex-direction: column;
 	width: 100%;
-	align-items: center;
+	max-width: $input-max-width;
 }
 
 .header {
@@ -18,14 +30,18 @@
 	margin-bottom: 6rem;
 }
 
-.headerError {
-	color: red;
+.errorMessage {
+  display: inline-block;
+  color: red;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+	width: 100%;
+	text-align: center;
 }
 
 .datePicker {
   position: relative;
-	max-width: 46rem;
-  // text-align: start;
+	max-width: $input-max-width;
 	box-shadow: none !important;
   width: 100% !important;
   box-sizing: border-box!important;

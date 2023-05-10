@@ -3,9 +3,10 @@
 
 .btnPosition {
 	position: fixed;
-	bottom: 5rem;
+	bottom: $action-btn-bottom;
 	width: 100%;
 	display: flex;
+	padding: 0 2rem;
 	justify-content: center;
 	z-index: 1;
 }
@@ -14,7 +15,8 @@
 	position: relative;
 	display: flex;
 	background-color: #f3f7f8;
-	min-width: 35rem;
+	width: 100%;
+	max-width: $action-btn-width;
 	justify-content: space-between;
 	border-radius: 1.5rem;
 	border: 2px solid #f3f7f8;

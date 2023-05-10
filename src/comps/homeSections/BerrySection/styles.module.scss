@@ -52,7 +52,7 @@
 	left: 0;
 	opacity: 0;
 	transform: translateX(-30rem);
-	transition: all 600ms ease-in;
+	transition: transform 500ms, opacity 500ms;
 }
 
 .active .image {

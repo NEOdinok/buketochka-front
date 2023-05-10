@@ -2,13 +2,18 @@
 @import '/src/styles/breakpoints';
 
 .navbar {
-	z-index: 1;
+	z-index: 2;
 	display: flex;
 	transition: opacity 100ms, transform 100ms;
 }
 
+.navWrapper {
+	max-width: 120rem;
+}
+
 .subItem {
 	transition: background-color 100ms;
+
 	&:hover {
 		background-color: $opacity-background;
 	}
@@ -31,18 +36,22 @@
 		display: block;
 		position: absolute;
 	}
-
-	&:hover {
-
-		.subMenu {
-			opacity: 1;
-			max-height: 100vh;
-		}
-	}
 }
+
 
 .cartContent {
 	display: flex;
+}
+
+.cart {
+	opacity: 0;
+	transform: scale(.5);
+	transition: opacity 100ms, transform 150ms, background-color 0.3s ease-out;
+}
+
+.cartVisible {
+	opacity: 1;
+	transform: scale(1);
 }
 
 @include desktop {
@@ -52,6 +61,10 @@
 		width: 100%;
 		background-color: $navbar-red;
 		justify-content: center;
+	}
+
+	.navItemAngle {
+		display: none;
 	}
 
 	.navWrapper {
@@ -141,7 +154,6 @@
 		width: $cart-width;
 		right: 15%;
 		background-color: #fff;
-		transition: background-color 0.3s ease-out;
 
 		&:hover {
 			background-color: $opacity-background;
@@ -191,24 +203,22 @@
 	.arrowIcon {
 		display: none;
 	}
-
 }
 
 @include mobileAndTablet {
 	.navbar {
-		height: 150vh;
-		width: 100%;
-		background-color: $navbar-red;
-		opacity: 1;
+		display: flex;
 		flex-direction: column;
 		position: fixed;
-		right: 0;
+		background-color: $navbar-red;
 		top: 0;
+		right: 0;
+		height: 100%;
 		transform: translateX(200%);
 	}
 
 	.navbarOpen {
-		transform: translateX(15%);
+		transform: none;
 	}
 
 	.navWrapper {
@@ -229,15 +239,47 @@
 		}
 	}
 
-	.navItemText {
+	.navItemContent {
+		display: flex;
+		align-items: center;
 		width: 100%;
-		display: inline-block;
-		padding: 2.5rem 0 2rem 6rem;
+		justify-content: cpace-between;
+		justify-content: space-between;
+		padding: 2rem 6rem;
+	}
+
+	.angleContainer {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+		border-radius: 20rem;
+		transition: transform 150ms;
+	}
+
+	.navItemAngle {
+		font-size: 2.5rem;
+		color: #fff;
+	}
+
+	.angleBtn  {
+		font-size: 2rem;
 	}
 
 	.subMenu {
 		background-color: white;
 	}
+
+	.hasVisibleSubmenu > ul.subMenu {
+		opacity: 1 ;
+		max-height: 100vh;
+	}
+
+	.hasVisibleSubmenu .angleContainer {
+		transform: rotate(180deg);
+	}
+
 
 	.subItem {
 		color: black;
@@ -319,7 +361,8 @@
 	.socialSection {
 		display: flex;
 		gap: 1.8rem;
-		padding: 2.5rem 0 2rem 4rem;
+		padding: 2rem;
+		justify-content: center;
 	}
 
 	.socialLink {
@@ -335,7 +378,7 @@
 
 		&:hover {
 			background-color: rgba(0,0,0,0.1);
-			transform: scale(1.1);
+			transform: scale(1.05);
 		}
 	}
 
@@ -346,3 +389,14 @@
 	}
 }
 
+@include tablet {
+	.navbar {
+		width: 60%;
+	}
+}
+
+@include mobile {
+	.navbar {
+		width: 90%;
+	}
+}

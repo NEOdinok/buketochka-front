@@ -23,6 +23,11 @@ class CartStore {
     }
   }
 
+  isEmpty = () => {
+    if (this.count() == 0) return true;
+    else return false;
+  }
+
   totalPrice = () => {
     if (this.products.length) {
       return this.products.reduce((acc, obj) => (

@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { Formik, FormikHelpers, Form } from 'formik';
 import { observer } from "mobx-react-lite";
 import ContactOptions from "../ContactOptions/ContactOptions";
-import DeliveryDate from "../DeliveryDate/DeliveryDate";
+import DeliveryDateTime from "../DeliveryDateTime/DeliveryDateTime";
 import ShippingOptions from "../ShippingOptions/ShippingOptions";
 import RecieverData from "../RecieverData/RecieverData";
 import SubmitBtn from "@/comps/app/SubmitBtn/SubmitBtn";
@@ -16,26 +16,29 @@ interface FormValues {
 	additional: string,
 	contactOption: string,
 	deliveryDate: string,
+	deliveryTime: string,
 	deliveryOption: string,
 	deliveryAdditional: string,
 }
 
 const OrderSchema = Yup.object().shape({
   name: Yup.string()
-    .required('Введите ваше имя')
-		.min(2, 'Имя должно быть минимум 2 символа'),
+    .required('Введите ваше имя*')
+		.min(2, 'Имя должно быть минимум 2 символа*'),
 	email: Yup.string()
-		.email('Введите верный email')
-		.required('Заполните email'),
+		.email('Введите верный email*')
+		.required('Заполните email*'),
 	phone: Yup.string()
-		.required("Введите ваш номер")
-		.min(16, 'Введите номер полностью'),
+		.required("Введите ваш номер*")
+		.min(16, 'Введите номер полностью*'),
 	contactOption: Yup.string()
-    .required('Выберите метод связи'),
+    .required('Выберите метод связи*'),
 	deliveryDate: Yup.string()
-		.required('Введите дату доставки'),
+		.required('Введите дату доставки*'),
+	deliveryTime: Yup.string()
+		.required('Введите время доставки*'),
 	deliveryOption: Yup.string()
-		.required('Выберите способ доставки'),
+		.required('Выберите способ доставки*'),
 });
 
 const CheckoutForm: NextPage = () => {
@@ -56,6 +59,7 @@ const CheckoutForm: NextPage = () => {
 				additional: '',
 				contactOption: '',
 				deliveryDate: '',
+				deliveryTime: '',
 				deliveryOption: '',
 				deliveryAdditional: '',
 			}}
@@ -82,9 +86,10 @@ const CheckoutForm: NextPage = () => {
 					</div>
 
 					<div className={styles.deliverySection}>
-						<DeliveryDate 
+						<DeliveryDateTime
 							values={values}
-							name="deliveryDate"
+							dateName="deliveryDate"
+							timeName="deliveryTime"
 							setFieldValue={setFieldValue}
 							className=""
 							errors={errors}

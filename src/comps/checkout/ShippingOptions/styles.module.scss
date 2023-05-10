@@ -16,6 +16,11 @@
 	color: #313131;
 }
 
+.additionalInput {
+	width: 100%;
+	max-width: $input-max-width;
+}
+
 .optionPrice {
 	color: #00ba5d;
 	font-weight: 700;
@@ -34,8 +39,10 @@
 	color: red;
 }
 
-.optionCards {
+.optionCards,
+.additionalDeliveryInfoSection {
 	display: flex;
+	align-items: center;
 	gap: 2rem;
 	padding: 0 2rem;
 	width: 100%;
@@ -47,6 +54,7 @@
 	padding: 2.5rem;
 	height: 18rem;
 	width: 100%;
+	max-width: $input-max-width;
 	cursor: pointer;
 	border: 2px solid #f3f7f8;
 	background-color: #f3f7f8;
@@ -64,7 +72,7 @@
 	border: 2px solid $active-color;
 }
 
-.optionNameAndPriceSection {
+.optionnamePriceDescriptionSection {
 	display: flex;
 	height: 100%;
 	flex-direction: column;
@@ -93,14 +101,10 @@
 .deliveryInfoHeader {
 	display: flex;
 	justify-content: center;
+	text-align: center;
 	color: #313131;
 	font-size: 2rem;
 	margin-top: 4rem;
-	margin-bottom: 2rem;
-}
-
-.additionalInput {
-	width: 40rem;
 }
 
 @include desktop {

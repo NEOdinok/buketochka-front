@@ -10,6 +10,7 @@ import { productType } from '@/types';
 import CartStore from '@/stores/CartStore';
 import { toggleIsProductInCart } from '@/utils/utilFunctions';
 import AmountSelector from '../AmountSelector/AmountSelector';
+import { capitalizeFirstLetter } from '@/utils/utilFunctions';
 
 interface productProps {
   product: productType;
@@ -43,10 +44,12 @@ const Set: NextPage<productProps> = ({ product }) => {
       </div>
 
       <div className={styles.infoSection}>
-        <div className={styles.nameAndPrice}>
+        <div className={styles.namePriceDescription}>
           <h1 className={styles.productName}>{product.name}</h1>
           <h1 className={styles.productPrice}>{product.price} ₽</h1>
+          <span className={styles.description}>{capitalizeFirstLetter(product.description)}</span>
         </div>
+
 
         <div className={styles.availabilityAndAmount}>
           <div className={styles.availability}>

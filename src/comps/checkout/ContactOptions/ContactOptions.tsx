@@ -11,7 +11,8 @@ interface Props {
     phone: string,
     additional: string,
     contactOption: string,
-    deliveryDate: string;
+    deliveryDate: string,
+    deliveryTime: string,
     deliveryOption: string,
     deliveryAdditional: string,
 	},

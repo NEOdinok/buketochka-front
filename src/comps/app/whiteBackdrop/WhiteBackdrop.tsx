@@ -6,7 +6,10 @@ import { observer } from "mobx-react-lite";
 
 const WhiteBackdrop = observer(() => {
   return (
-    <div className={ cn(styles.drawerBackdrop, UIStore.isMenuOpen ? styles.open : undefined) } />
+    <div
+      className={ cn(styles.drawerBackdrop, UIStore.isMenuOpen ? styles.open : undefined) }
+      onClick={() => { UIStore.setMenuClosed() }}
+    />
   )
 })
 

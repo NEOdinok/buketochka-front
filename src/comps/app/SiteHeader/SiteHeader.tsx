@@ -16,16 +16,18 @@ const SiteHeader: React.FC<Props> = ({className, setOpen, open}) => {
 	const router = useRouter();
 	return (
 		<header className={cn(styles.header, className)}>
-			<div className={cn(styles.logoSection, styles.headerSection)}>
-				<Image className={styles.logo} src={buketochkaLogo} alt="Header loto"></Image>
-			</div>
-			<div className={cn(styles.sloganSection, styles.headerSection)}>
-				<p className={styles.slogan}>Букеты и наборы из клубники в бельгийском шоколаде</p>
-			</div>
-			<div className={cn(styles.socialAndBurgerSection, styles.headerSection)}>
-				<HeaderContactList />
-				<div className={styles.burgerBtnContainer}>
-					<BurgerBtn />
+			<div className={styles.headerWrapper}>
+				<div className={cn(styles.logoSection, styles.headerSection)}>
+					<Image className={styles.logo} src={buketochkaLogo} alt="Header loto"></Image>
+				</div>
+				<div className={cn(styles.sloganSection, styles.headerSection)}>
+					<p className={styles.slogan}>Букеты и наборы из клубники в бельгийском шоколаде</p>
+				</div>
+				<div className={cn(styles.socialAndBurgerSection, styles.headerSection)}>
+					<HeaderContactList />
+					<div className={styles.burgerBtnContainer}>
+						<BurgerBtn />
+					</div>
 				</div>
 			</div>
 		</header>

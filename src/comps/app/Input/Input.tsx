@@ -1,5 +1,5 @@
 import { Field, ErrorMessage, Formik } from 'formik';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import cn from 'classnames';
 import MaskedInput from 'react-input-mask';
@@ -21,11 +21,6 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 
 	return (
 		<>
-			<ErrorMessage
-				name={name}
-				component="span"
-				className={styles.errorMessage}
-			/>
 			<div className={cn(styles.inputField, className)}>
 				{
 					isTextArea?
@@ -37,6 +32,7 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 						id={ id }
 						name={name}
 						type={type}
+						rows="4"
 					/>
 
 					:id === "phone"? 
@@ -49,12 +45,9 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 						className={styles.input}
 						icon="fab fa-viber"
 						description="Написать в Viber "
-						// setFieldValue={setFieldValue}
-						// values={values}
 						onBlur={(e) => {e.target.value.length > 0 ? undefined : setFocused(false)}}
 						onFocus={() => { setFocused(true)}}
 					/>
-
 
 					:
 					<Field
@@ -74,7 +67,11 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 					{label}
 				</ label>
 
-
+				<ErrorMessage
+					name={name}
+					component="span"
+					className={styles.errorMessage}
+				/>
 			</div>
 		</>
 	);

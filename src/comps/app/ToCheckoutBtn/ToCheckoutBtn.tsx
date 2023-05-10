@@ -2,9 +2,10 @@ import { observer } from "mobx-react-lite";
 import styles from './styles.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cn from 'classnames';
-import { faPaperPlane, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
 	header: string,
@@ -24,7 +25,7 @@ const ToCheckoutBtn: React.FC<Props> = ({ header, main }) => {
 
 				<div className={styles.imgSection}>
 					<div className={styles.imgWrap}>
-						<FontAwesomeIcon icon={faPaperPlane} className={styles.icon} />
+						<FontAwesomeIcon icon={faArrowRight} className={styles.icon} />
 					</div>
 				</div>
 			</button>

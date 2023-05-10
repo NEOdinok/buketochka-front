@@ -9,10 +9,15 @@ import { subCategoryDataType, categoriesType, categoryDataType } from '@/types';
 import UIStore from '@/stores/UIStore';
 import CartStore from '@/stores/CartStore';
 import { observer } from 'mobx-react-lite';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
 	const router = useRouter();
 	const [categories, setCategories] = useState<categoriesType>([]);
+	const [openCategory, setOpenCategory] = useState<string>('');
 
 	const getNavbarData = async () => {
 		const tempCategories: categoriesType = [];
@@ -48,15 +53,33 @@ const Navbar: React.FC = () => {
 		getNavbarData().finally(() => UIStore.toggleIsLoading());
 	}, []);
 
+	useEffect(() => {
+		const html = document.querySelector('html');
+
+    if (UIStore.isMenuOpen)
+      (html as HTMLElement).classList.add('overflowHidden');
+    if (!UIStore.isMenuOpen)
+      (html as HTMLElement).classList.remove('overflowHidden');
+	}, [UIStore.isMenuOpen]);
+
+	const toggleOpen = (e: React.MouseEvent, route: string): void => {
+		e.stopPropagation();
+    e.preventDefault();
+		if (openCategory === route) setOpenCategory('');
+		else setOpenCategory(route);
+  };
+
 	const renderSubcategories = (subcategories: Array<subCategoryDataType>) => 
 		subcategories.map(
 			(subcategory): ReactNode => (
 				<li
+					id={subcategory.route}
 					className={styles.subItem}
 					onClick={(e) => { 
 						e.stopPropagation();
 						console.log('pressed SubCategory');
 						router.replace(`/subcategories/${subcategory.route}`)
+						UIStore.toggleMenuOpen()
 					}}
 					key={subcategory.id}
 				>
@@ -68,11 +91,28 @@ const Navbar: React.FC = () => {
 	const renderCategories = () =>
 		categories.map(
 			(category): ReactNode => (
-				<div className={ cn(router.pathname == `/${category.route}` ? styles.active : undefined, styles.navItem) }
-					onClick={() => { console.log('pressed category'); router.replace(`/categories/${category.route}`)}}
+				<div
+					id={category.route}
+					className={cn(
+						`/categories/${router.query.dynamicCategory}` == `/categories/${category.route}`? styles.active: '',
+						styles.navItem,
+						(openCategory === `${category.route}`)? styles.hasVisibleSubmenu: '',
+						)}
+					onClick={() => { router.replace(`/categories/${category.route}`); UIStore.setMenuClosed();}}
 					key={category.id}
 				>
-					<span className={styles.navItemText}>{category.name}</span>
+					<div className={styles.navItemContent}>
+						<span className={styles.navItemText}>{category.name}</span>
+						{ (category.subcategories.length != 0) && 
+							<div
+								className={styles.angleContainer}
+								onClick={(e: React.MouseEvent) => toggleOpen(e, category.route)}
+							>
+								<FontAwesomeIcon className={styles.navItemAngle} icon={faAngleDown} />
+							</div>
+						}
+					</div>
+
 					<ul className={ styles.subMenu }>
 						{ renderSubcategories(category.subcategories)}
 					</ul>
@@ -83,16 +123,19 @@ const Navbar: React.FC = () => {
 	return (
 		<nav className={cn(styles.navbar, UIStore.isMenuOpen? styles.navbarOpen: '')}>
 			<div className={ styles.navWrapper }>
-				<div className={ cn(router.pathname == '/' ? styles.active : undefined, styles.navItem)}
-					onClick={() => { router.push('/')}}
+
+				<div className={ cn(router.pathname == '/'? styles.active: '', styles.navItem)}
+					onClick={() => { router.push('/'); UIStore.setMenuClosed();}}
 				>
-					<span className={styles.navItemText}>Главная</span>
+					<div className={styles.navItemContent}>
+						<span className={styles.navItemText}>Главная</span>
+					</div>
 				</div>
 
 				{ renderCategories() }
 
-				<div className={ styles.cart }
-					onClick={() => { router.push('/cart')}}
+				<div className={cn(styles.cart, CartStore.isEmpty()? '': styles.cartVisible)}
+					onClick={() => { router.push('/cart'); UIStore.setMenuClosed(); }}
 				>
 					<div className={ styles.cartContent }>
 						<div className={styles.cartIconSection}>
@@ -107,6 +150,21 @@ const Navbar: React.FC = () => {
 						</div>
 					</div>
 				</div>
+
+				<div className={styles.socialSection}>
+					<Link href="#" target="_blank" className={styles.socialLink}>
+						<FontAwesomeIcon className={cn(styles.telegramIcon, styles.socialIcon)} icon={faTelegram}/>
+					</Link>
+
+					<Link href="#" target="_blank" className={styles.socialLink}>
+						<FontAwesomeIcon className={cn(styles.telegramIcon, styles.socialIcon)} icon={faWhatsapp}/>
+					</Link>
+
+					<Link href="#" target="_blank" className={styles.socialLink}>
+						<FontAwesomeIcon className={cn(styles.telegramIcon, styles.socialIcon)} icon={faInstagram}/>
+					</Link>
+				</div>
+
 			</div>
 		</nav>
 	);

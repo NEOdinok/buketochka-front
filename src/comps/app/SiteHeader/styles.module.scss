@@ -4,21 +4,28 @@
 .header {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
   padding: $header-padding;
 }
 
-.headerSection {
+.headerWrapper {
+  width: 100%;
   display: flex;
-  align-items: center;
+  max-width: 120rem;
 }
 
 .slogan {
   font-size: 1.8rem;
+  text-align: center;
 }
 
-.sloganSection {
-  text-align: center;
-  font-weight: 500;
+.socialAndBurgerSection,
+.sloganSection,
+.logoSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
@@ -30,23 +37,18 @@
     display: none;
   }
 
-  .header {
+  .headerWrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
   
   .logo {
-    // max-width: 22rem;
     max-width: $header-logo-width-desktop;
-  }
-
-  .headerSection {
-    justify-content: center;
   }
 }
 
 @include mobileAndTablet {
-  .header {
+  .headerWrapper {
     padding-right: 15%;
     display: flex;
   }
@@ -56,6 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2rem;
     height: $header-and-burger-height;
   }
 
@@ -68,13 +71,22 @@
     top: 0;
     right: 0;
     position: fixed;
-    margin: $header-padding;
+    margin: 2rem;
     z-index: 3;
+  }
+
+  .logoSection,
+  .sloganSection {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    max-height: 20rem;
   }
 }
 
 @include tablet {
-  .header {
+  .headerWrapper {
     justify-content: flex-start;
     gap: 1rem;
   }
@@ -86,20 +98,20 @@
   .slogan {
     font-weight: 500;
   }
-
-  .logoSection {
-    flex: 1;
-  }
 }
 
 @include mobile {
-  .header {
+  .headerWrapper {
     flex-direction: column;
     gap: 1.5rem;
   }
 
+  .header {
+    padding: 2rem;
+  }
+
   .slogan {
     text-align: start;
-    max-width: 30rem;
+    max-width: 25rem;
   }
 }

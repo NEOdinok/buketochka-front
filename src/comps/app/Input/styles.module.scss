@@ -9,8 +9,6 @@
 .textArea, 
 .input {
   width: 100%;
-  height: 5rem;
-  min-height: 5rem;
   padding: 1.5rem 3rem;
   outline: none;
   box-sizing: border-box;
@@ -39,7 +37,8 @@
 .errorMessage {
   display: inline-block;
   color: red;
-  font-size: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
 }
 
 .label {

@@ -12,6 +12,7 @@ interface Props {
     additional: string,
     contactOption: string,
     deliveryDate: string,
+    deliveryTime: string,
     deliveryOption: string,
     deliveryAdditional: string,
 	},
@@ -55,7 +56,7 @@ const ShippingOptions: React.FC<Props> = ({
 					onClick={() => setFieldValue(name, 'pickup')} 
 					className={ cn(styles.option, values.deliveryOption === 'pickup'? styles.active: '') }
 				>
-					<div className={styles.optionNameAndPriceSection}>
+					<div className={styles.optionnamePriceDescriptionSection}>
 						<span className={cn(styles.optionName, styles.optionText)}>Самовывоз из г. Видное</span>
 						<span className={cn(styles.optionPrice, styles.optionText)}>Бесплатно</span>
 					</div>
@@ -68,7 +69,7 @@ const ShippingOptions: React.FC<Props> = ({
 					onClick={() => setFieldValue(name, 'delivery')} 
 					className={ cn(styles.option, values.deliveryOption === 'delivery'? styles.active: '') }
 				>
-					<div className={styles.optionNameAndPriceSection}>
+					<div className={styles.optionnamePriceDescriptionSection}>
 						<span className={cn(styles.optionName, styles.optionText)}>Доставка</span>
 						<span className={cn(styles.optionPrice, styles.optionText)}>Дорого</span>
 					</div>

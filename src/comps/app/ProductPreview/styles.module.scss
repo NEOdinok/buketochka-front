@@ -41,6 +41,12 @@
 	min-width: 9.7rem;
 }
 
+.availabilityAndAmount {
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+}
+
 .greenBtn {
 	background-color: #00e085;
 }
@@ -54,7 +60,6 @@
 	font-weight: 700;
 	font-size: 3.5rem;
 	text-align: center;
-	// text-shadow: 1px 1px 2px rgba(92,81,80,.32);
 	color: #313131;
 	margin: 3.5rem 0 6.5rem 0;
 }
@@ -62,8 +67,6 @@
 .productPreview {
 	position: relative;
 	display: flex;
-	gap: 2rem;
-	padding: 6rem;
 }
 
 .productName {
@@ -74,7 +77,6 @@
 }
 
 .productPrice {
-	margin-top: 1rem;
 	letter-spacing: 1px;
 	font-size: 3rem;
 	font-weight: 700;
@@ -88,23 +90,11 @@
 	flex-direction: column;
 }
 
-.nameAndPrice {
-	position: absolute;
-	top: 0;
-}
-
 .infoSection {
 	max-height: $preview-img-height;
 	justify-content: center;
 }
 
-.carouselSection {
-	flex: 1;
-}
-
-.infoSection {
-	flex: 2;
-}
 
 .carousel {
 	display: flex;
@@ -132,6 +122,12 @@
 .subImgActive {
 	transform: scale(1.05);
 	opacity: .5;
+}
+
+.namePriceDescription {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .previewLine {
@@ -165,10 +161,72 @@
 	color: #00e085;;
 }
 
+.description {
+	font-size: 1.5rem;
+}
+
+@include tabletAndDesktop {
+	.namePriceDescription {
+		position: absolute;
+		top: 0;
+	}
+}
+
 @include desktop {
-	.cardsContainer {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+	.productPreview {
 		gap: 2rem;
+		padding: 6rem;
+	}
+
+	.carouselSection {
+		flex: 1;
+	}
+
+	.infoSection {
+		flex: 2;
+	}
+}
+
+@include mobileAndTablet {
+	.namePriceDescription {
+		width: 100%;
+	}
+
+	.productName,
+	.productPrice,
+	.description {
+		text-align: center;
+	}
+
+	.availabilityAndAmount {
+		margin-top: 5rem;
+		align-items: center;
+	}
+}
+
+@include tablet {
+	.productPreview {
+		padding: 2rem;
+		gap: 1rem;
+	}
+
+	.carouselSection,
+	.infoSection {
+		flex: 1;
+	}
+
+}
+
+@include mobile {
+	.productPreview {
+		padding: 0 2rem;
+		flex-direction: column;
+		align-items: center;
+		gap: 3.5rem;
+	}
+
+	.carouselSection,
+	.carousel {
+		max-width: 28rem;
 	}
 }
