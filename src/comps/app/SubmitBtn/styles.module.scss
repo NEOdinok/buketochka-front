@@ -1,0 +1,74 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.btnPosition {
+	position: fixed;
+	bottom: $action-btn-bottom;
+	width: 100%;
+	display: flex;
+	padding: 0 2rem;
+	justify-content: center;
+	z-index: 1;
+}
+
+.btnInnerWrap {
+	color: $black-text;
+	position: relative;
+	display: flex;
+	background-color: #f3f7f8;
+	width: 100%;
+	max-width: $action-btn-width;
+	justify-content: space-between;
+	border-radius: 1.5rem;
+	border: 2px solid $active-green;
+	padding: 1rem 2rem;
+	box-shadow: $shadow;
+	transition: box-shadow 150ms, color 150ms, background-color 150ms; 
+
+	&:hover {
+		background-color: $active-green;
+		box-shadow: none;
+		color: #fff;
+
+		.icon {
+			color: #fff;
+		}
+	}
+}
+
+.icon {
+	font-size: 3rem;
+	color: $active-green;
+}
+
+.textSection {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+// .header,
+// .mainText {
+// 	color: #404040;
+// }
+
+.header {
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.mainText {
+	font-size: 1.8rem;
+}
+
+.imgSection,
+.imgWrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgWrap {
+	background-color: transparent;
+	border-radius: 1.5rem;
+}

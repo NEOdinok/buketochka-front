@@ -1,0 +1,68 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.chocoSection {
+	background-color: #ec4559;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
+	position: relative;
+	display: flex;
+	max-width: 100rem;
+}
+
+.textContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imageContainer {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.image {
+	opacity: 0;
+	transform: translateX(-30rem);
+	// transition: opacity 150ms, transform 400ms;
+	transition: all 500ms;
+}
+
+.active .image {
+	transform: none;
+	opacity: 1;
+}
+
+.text {
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 500;
+	line-height: 10rem;
+	color: white;
+	transition: opacity 750ms ease;
+}
+
+@include desktop {
+	.text {
+		font-size: 4rem;
+	}
+}
+
+@include mobileAndTablet {
+	.text {
+		font-size: 3.5rem;
+	}
+
+	.chocoSection {
+		padding-top: 20rem;
+	}
+	.content {
+		flex-direction: column;
+	}
+}

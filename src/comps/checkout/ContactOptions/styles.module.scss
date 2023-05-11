@@ -1,0 +1,36 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.contactOptions {
+	display: flex;
+	flex-direction: column;
+	margin: 5rem 0;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-align: center;
+	color: #313131;
+	margin-bottom: 6rem;
+}
+
+.headerError {
+	color: red;
+}
+
+@include desktop {
+	.mobileBreak {
+		display: none;
+	}
+
+	.header {
+		font-size: $checkout-header-small;
+	}
+}
+
+@include mobileAndTablet {
+	.header {
+		font-size: $checkout-header-big;
+	}
+}

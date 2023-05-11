@@ -1,0 +1,64 @@
+.heroSection {
+	position: relative;
+}
+
+.heroImgWrap {
+	position: relative;
+}
+
+.heroImg {
+	height: 75vh;
+	object-fit: cover;
+	width: 100%;
+	min-height: 35rem;
+}
+
+.darkenImage {
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	background-color: rgba(0,0,0,.6);
+	transition: all 1s;
+}
+
+.heroText {
+	position: absolute;
+	top: 20%;
+	width: 100%;
+	color: #fff;
+	font-size: 5rem;
+	letter-spacing: .5rem;
+	text-shadow: 0 0 35px white;
+	font-weight: 500;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 13rem;
+	cursor: pointer;
+}
+
+.emoji {
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  transform: scale(0);
+  width: 10px;
+  height: 10px;
+  transition-delay: 2s;
+  transition: transform .3s ease-out;
+}
+
+.heroSection.active {
+  .berryEmoji {
+		transform: scale(4) translateX(-8vw) translateY(7vh) rotate(-50deg);
+  }
+  .alcoEmoji {
+		transform: scale(7) translateX(6vw) translateY(4vh) rotate(80deg);
+  }
+  .chocoEmoji {
+		transform: scale(7.5) translateX(4vw) translateY(-2vh) rotate(60deg);
+  }
+	.giftEmoji {
+		transform: scale(5) translateY(-3vh) rotate(360deg);
+	}
+}

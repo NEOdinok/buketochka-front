@@ -1,0 +1,117 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.sets {
+	position: relative;
+	width: 100%;
+	margin-top: 10rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.header {
+	font-size: 4rem;
+	font-weight: bold;
+	color: #414141;
+	line-height: 110%;
+	margin: 2.4rem 0 1.4rem 0;
+}
+
+.price {
+	font-size: 5.5rem;
+	font-weight: bold;
+	font-style: italic;
+	font-weight: 900;
+	letter-spacing: 2px;
+	color: #fd5949;
+	margin: 6rem 0;
+}
+
+.button {
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	text-align: center;
+	cursor: pointer;
+	padding: 2rem 5rem;
+	color: #fff;
+	border-radius: 1.5rem;
+	background-color: #fd5949;
+	outline: none;
+	border: none;
+	box-shadow: $shadow;
+	font-size: 1.5rem;
+	font-weight: 700;
+	z-index: 1;
+	transition: box-shadow 200ms, transform 200ms;
+
+	&:hover {
+		box-shadow: none;
+		transform: scale(0.98);
+	}
+}
+
+.image {
+	position: absolute;
+	object-fit: contain;
+	transition: all 950ms ease-out;
+  z-index: 1;
+}
+
+.rightSet {
+	position: absolute;
+	right: 0%;
+	top: 0%;
+	width: 35vw;
+}
+
+.leftSet {
+	top: 0%;
+	position: absolute;
+	left: -12%;
+	width: 50vw;
+} 
+
+.active .rightSet,
+.active .leftSet {
+	opacity: .4;
+	// background: hsla(0,0%,100%,.65);
+}
+
+.active .rightSet {
+	top: -80%;
+	width: 25vw;
+}
+
+.active .leftSet {
+	top: -40%;
+	width: 35vw;
+}
+
+@include tablet {
+	.active .rightSet {
+		top: -120%;
+		width: 20vw;
+	}
+	
+	.active .leftSet {
+		top: -70%;
+		width: 35vw;
+	}
+}
+
+@include mobile{
+	.header {
+		font-size: 3.5rem;
+	}
+	.active .rightSet {
+		top: -100%;
+		width: 30vw;
+	}
+	
+	.active .leftSet {
+		top: -40%;
+		width: 50vw;
+	}
+}

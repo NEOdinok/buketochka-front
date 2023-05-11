@@ -1,0 +1,66 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.footer {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3rem 0;
+	width: 100%;
+	background-color: #fff;
+	padding: 2rem;
+}
+
+.header {
+	color: #414141;
+	padding: 4rem 0;
+	font-weight: 700;
+	text-align: center;
+}
+
+.linksContainer {
+	display: flex;
+	gap: 2rem;
+}
+
+.socialIcon {
+	font-size: 4rem;
+
+	&:hover {
+		opacity: .9;
+		transform: scale(1.05);
+	}
+}
+
+.instagramIcon {
+	background: #d6249f;
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.telegramIcon {
+	color: #4c99db;
+}
+
+.whatsappIcon {
+	color: #00e676;
+}
+
+@include desktop {
+	.header {
+		font-size: 4rem;
+	}
+}
+
+@include mobileAndTablet {
+	.header {
+		font-size: 3rem;
+	}
+
+	.footer {
+		flex-direction: column;
+	}
+
+}

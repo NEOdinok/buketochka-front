@@ -1,0 +1,82 @@
+@import '/src/styles/vars';
+@import '/src/styles/breakpoints';
+
+.deliveryDate {
+	margin: 5rem 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.input {
+	width: 100%;
+	margin-top: 2rem;
+}
+
+.deliveryWrap {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	max-width: $input-max-width;
+}
+
+.header {
+	letter-spacing: 2px;
+	font-weight: 700;
+	font-size: 4rem;
+	text-align: center;
+	color: #313131;
+	margin-bottom: 6rem;
+}
+
+.errorMessage {
+  display: inline-block;
+  color: red;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+	width: 100%;
+	text-align: center;
+}
+
+.datePicker {
+  position: relative;
+	max-width: $input-max-width;
+	box-shadow: none !important;
+  width: 100% !important;
+  box-sizing: border-box!important;
+  background: #f3f7f8 !important;
+  border-radius: 16px!important;
+  font-weight: 500!important;
+  color: #4b4b4b!important;
+  font-size: 16px!important;
+  padding: 8px 16px!important;
+  height: 5rem !important;
+  border: 2px solid #f3f7f8 !important;
+
+	input {
+		font-size: 2rem !important;
+		color: #4b4b4b;
+		box-shadow: none !important;
+	}
+}
+
+@include desktop {
+	.mobileBreak {
+		display: none;
+	}
+
+	.header {
+		font-size: $checkout-header-small;
+	}
+}
+
+@include mobileAndTablet {
+	.header {
+		font-size: $checkout-header-big;
+	}
+
+	.deliveryDate {
+		padding: 0 2rem;
+	}	
+}

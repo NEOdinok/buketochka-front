@@ -1,0 +1,117 @@
+@import '/src/styles/breakpoints';
+@import '/src/styles/vars';
+
+.header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: $header-padding;
+}
+
+.headerWrapper {
+  width: 100%;
+  display: flex;
+  max-width: 120rem;
+}
+
+.slogan {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.socialAndBurgerSection,
+.sloganSection,
+.logoSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  height: fit-content;
+}
+
+@include desktop {
+  .burgerBtn {
+    display: none;
+  }
+
+  .headerWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .logo {
+    max-width: $header-logo-width-desktop;
+  }
+}
+
+@include mobileAndTablet {
+  .headerWrapper {
+    padding-right: 15%;
+    display: flex;
+  }
+
+  .burgerBtnContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    height: $header-and-burger-height;
+  }
+
+  .logo {
+    max-width: $header-logo-width-mob-and-tab;
+    max-height: $header-and-burger-height;
+  }
+
+  .socialAndBurgerSection {
+    top: 0;
+    right: 0;
+    position: fixed;
+    margin: 2rem;
+    z-index: 3;
+  }
+
+  .logoSection,
+  .sloganSection {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    max-height: 20rem;
+  }
+}
+
+@include tablet {
+  .headerWrapper {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .sloganSection {
+    flex: 2;
+  }
+
+  .slogan {
+    font-weight: 500;
+  }
+}
+
+@include mobile {
+  .headerWrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .header {
+    padding: 2rem;
+  }
+
+  .slogan {
+    text-align: start;
+    max-width: 25rem;
+  }
+}
