@@ -25,7 +25,7 @@ interface Props {
     deliveryOption: string;
     deliveryAdditional: string;
   }>,
-	setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+	setFieldValue: (field: string, value: string, shouldValidate?: boolean | undefined) => void,
 	className: string,
 }
 
