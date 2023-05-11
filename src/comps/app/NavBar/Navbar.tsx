@@ -75,7 +75,7 @@ const Navbar: React.FC = () => {
 				<li
 					id={subcategory.route}
 					className={styles.subItem}
-					onClick={(e) => { 
+					onClick={(e:React.MouseEvent<HTMLElement>) => { 
 						e.stopPropagation();
 						console.log('pressed SubCategory');
 						router.replace(`/subcategories/${subcategory.route}`)

@@ -37,7 +37,7 @@ const AmountSelector: React.FC<Props> = ({ product }) => {
 
 			<button
 				className={cn(styles.cartBtn, CartStore.hasProduct(product.id)? styles.redBtn: styles.greenBtn)}
-				onClick={(e) => toggleIsProductInCart(e, product)}
+				onClick={(e:React.MouseEvent<HTMLElement>) => toggleIsProductInCart(e, product)}
 			>
 				{/* В корзину */ CartStore.hasProduct(product.id)? 'Удалить': 'В корзину'}
 			</button>

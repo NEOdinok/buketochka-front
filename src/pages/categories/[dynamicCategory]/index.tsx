@@ -13,7 +13,7 @@ import { capitalizeFirstLetter } from '@/utils/utilFunctions';
 
 interface serverSideProps {
   products: Array<productType>;
-	param: any;
+	param: string;
 }
 
 export async function getServerSideProps(context: any) {
@@ -39,6 +39,10 @@ export async function getServerSideProps(context: any) {
 
 const DynamicRoute: NextPage<serverSideProps> = ({ param, products }) => {
 	const router = useRouter();
+
+  useEffect(() => {
+    console.log('route param', param, 'its type', typeof(param));
+  }, []);
 
   const renderProductCards = () =>
     products.map((product): ReactNode => (

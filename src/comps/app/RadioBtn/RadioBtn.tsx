@@ -19,7 +19,7 @@ interface Props {
     additional: string,
     contactOption: string,
   },
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+  setFieldValue: (field: string, value: string, shouldValidate?: boolean | undefined) => void,
 }
 
 const RadioBtn: React.FC<Props> = ({
@@ -35,7 +35,7 @@ const RadioBtn: React.FC<Props> = ({
 	return (
 	<div
 		className={cn(styles.inputField, className)}
-		onClick={(e) => setFieldValue(name, value)}
+		onClick={(e:React.MouseEvent<HTMLElement>) => setFieldValue(name, value)}
 	>
 		<div className={styles.head}>
 			<div className={cn(styles.icon, styles[ id ], (values.contactOption === value)? styles.active: '')}>

@@ -4,6 +4,20 @@ const nextConfig = {
   images: {
     domains: ['firebasestorage.googleapis.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/categories',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/subcategories',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

@@ -27,7 +27,7 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 					<Field
 						as="textarea"
 						className={styles.textArea}
-						onBlur={(e) => {e.target.value.length > 0 ? undefined : setFocused(false)}}
+						onBlur={(e:React.MouseEvent<HTMLInputElement>) => {e.currentTarget.value.length > 0 ? undefined : setFocused(false)}}
 						onFocus={() => { setFocused(true)}}
 						id={ id }
 						name={name}
@@ -45,7 +45,7 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 						className={styles.input}
 						icon="fab fa-viber"
 						description="Написать в Viber "
-						onBlur={(e) => {e.target.value.length > 0 ? undefined : setFocused(false)}}
+						onBlur={(e:React.MouseEvent<HTMLInputElement>) => {e.currentTarget.value.length > 0 ? undefined : setFocused(false)}}
 						onFocus={() => { setFocused(true)}}
 					/>
 
@@ -55,7 +55,7 @@ const Input: React.FC<Props> = ({type, name, id, className, label, isTextArea, i
 						name={name}
 						id={id}
 						className={cn(styles.input)}
-						onBlur={(e) => {e.target.value.length > 0 ? undefined : setFocused(false)}}
+						onBlur={(e:React.MouseEvent<HTMLInputElement>) => {e.currentTarget.value.length > 0 ? undefined : setFocused(false)}}
 						onFocus={() => { setFocused(true)}}
 					/>
 				}

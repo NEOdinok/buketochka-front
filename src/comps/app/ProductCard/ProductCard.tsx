@@ -35,7 +35,7 @@ const ProductCard: React.FC<Props> = ({id, page, product, pageType}) => {
 
 				<button
 					className={cn(styles.cardBtn, CartStore.hasProduct(product.id)? styles.inCartBtn: '')}
-					onClick={(e) => toggleIsProductInCart(e, product)}
+					onClick={(e:React.MouseEvent<HTMLElement>) => toggleIsProductInCart(e, product)}
 				>
 					{
 						CartStore.hasProduct(product.id)?
