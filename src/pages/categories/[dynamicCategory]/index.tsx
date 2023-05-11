@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import LoadingScreen from '@/comps/app/LoadingScreen/LoadingScreen';
 import { ReactNode, useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import ProductCard from '@/comps/app/ProductCard/ProductCard';
@@ -19,7 +18,7 @@ interface serverSideProps {
 export async function getServerSideProps(context: any) {
 	const param = context.params.dynamicCategory; 
 	try {
-		const querySnapshot = await getDocs(collection(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', `products`));
+		const querySnapshot = await getDocs(collection(db, `products`));
 		const products: Array<productType> = [];
 		querySnapshot.forEach(productDoc => {
       if (productDoc.data().category.label === `${param}`) {
@@ -39,10 +38,6 @@ export async function getServerSideProps(context: any) {
 
 const DynamicRoute: NextPage<serverSideProps> = ({ param, products }) => {
 	const router = useRouter();
-
-  useEffect(() => {
-    console.log('route param', param, 'its type', typeof(param));
-  }, []);
 
   const renderProductCards = () =>
     products.map((product): ReactNode => (

@@ -26,7 +26,7 @@ interface serverSideProps {
 export async function getServerSideProps(context: any) {
   try {
     const id = context.params.id;
-    const documentData = await getDoc(doc(db, 'users', 'RGdaFnMIZ2PX5xKpwtx25kSC3dB2', 'products', `${id}`));
+    const documentData = await getDoc(doc(db, 'products', `${id}`));
 
     const data = {
       cartAmount: 0,
