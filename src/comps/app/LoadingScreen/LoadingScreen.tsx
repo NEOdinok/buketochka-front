@@ -4,7 +4,6 @@ import cn from "classnames";
 import UIStore from '@/stores/UIStore';
 import { observer } from 'mobx-react-lite';
 
-
 const LoadingScreen:React.FC = () => {
 	return (
 		<>

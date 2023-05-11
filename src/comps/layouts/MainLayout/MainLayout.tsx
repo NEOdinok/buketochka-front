@@ -1,5 +1,4 @@
 import styles from './styles.module.scss'
-import LoadingScreen from '@/comps/app/LoadingScreen/LoadingScreen';
 import cn from "classnames"
 import SiteHeader from "@/comps/app/SiteHeader/SiteHeader";
 import WhiteBackdrop from '@/comps/app/whiteBackdrop/WhiteBackdrop';
@@ -10,14 +9,13 @@ import SiteFooter from '@/comps/app/SiteFooter/SiteFooter';
 import { observer } from 'mobx-react-lite';
 import CartStore from '@/stores/CartStore';
 import { productType } from '@/types';
+import LoadingScreen from '@/comps/app/LoadingScreen/LoadingScreen';
 
 const roboto = Roboto({ 
   subsets: ['latin', 'cyrillic'],
   weight: ["300", "400", "500", "700", "900"],//light, regular, med, bold
   preload: true,
 })
-
-
 
 interface Props {
   children: ReactNode,

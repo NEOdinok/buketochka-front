@@ -49,7 +49,7 @@ const Home: NextPage = () => {
   return (
     <>
       <HeroSection ref={heroSectionRef} active={heroActive} />
-      <CardsSection ref={cardsSectionRef} active={cardsActive} />
+      {/* <CardsSection ref={cardsSectionRef} active={cardsActive} /> */}
       <SetsSection ref={setsSectionRef} active={setsActive} />
       <BerrySection ref={berrySectionRef} active={berryActive} />
       <ChocoSection ref={chocoSectionRef} active={chocoActive} />

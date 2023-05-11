@@ -9,6 +9,7 @@
 }
 
 .amountSelector {
+	margin-top: 2rem;
 	position: relative;
 	padding: .5rem;
 	align-items: center;
@@ -116,7 +117,7 @@
 @include mobile {
 	.cartCard {
 		width: 85%;
-		max-width: 35rem;
+		max-width: $card-max-width;
 		flex-direction: column;
 	}
 }
