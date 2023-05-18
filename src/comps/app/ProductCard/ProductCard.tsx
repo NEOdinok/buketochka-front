@@ -22,7 +22,7 @@ const ProductCard: React.FC<Props> = ({id, page, product, pageType}) => {
 		 <Link className={styles.productCard} href={`/${pageType}/${page}/${id}`}>
 			<div className={styles.imageSection}>
 				<img 
-					src={product.imagesData.filter(img => img.isMain === "true")[0].url}
+					src={product.imagesData.filter(img => img.isMain === true)[0].url}
 					className={styles.cardImage}
 					alt=""
 				/>

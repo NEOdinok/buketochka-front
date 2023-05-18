@@ -9,7 +9,7 @@ type imageData = {
 type imagesDataType = Array<
   { 
     extension: string,
-    isMain: string,
+    isMain: boolean,
     storageRef: string,
     uid: string,
     url: string,

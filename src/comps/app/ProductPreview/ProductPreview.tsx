@@ -17,7 +17,7 @@ interface productProps {
 }
 
 const Set: NextPage<productProps> = ({ product }) => {
-  const [mainImg, setMainImg] = useState(product.imagesData.filter(img => img.isMain === "true")[0].url);
+  const [mainImg, setMainImg] = useState(product.imagesData.filter(img => img.isMain === true)[0].url);
 
 	return (
     <div className={styles.productPreview}>
