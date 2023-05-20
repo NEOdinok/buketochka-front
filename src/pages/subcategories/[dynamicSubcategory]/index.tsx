@@ -60,7 +60,7 @@ const DynamicRoute: NextPage<serverSideProps> = ({ param, products }) => {
       <div className={styles.sets}>
         {
           !products.length?
-          <h1 className={styles.header}>Wrong route :c</h1>
+          <h1 className={styles.header}>No such subcategory</h1>
 
           :
           <>

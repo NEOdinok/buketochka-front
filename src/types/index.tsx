@@ -22,15 +22,6 @@ type productType = {
   description: string,
   imageUrls: Array<string>,
   imagesData: imagesDataType,
-  // imagesData: {
-  //   [key: number]: { 
-  //     extension: string,
-  //     isMain: string,
-  //     storageRef: string,
-  //     uid: string,
-  //     url: string,
-  //   }
-  // },
   name: string,
   price: number,
   quantity: number,

@@ -47,6 +47,7 @@ const CheckoutForm: NextPage = () => {
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
     console.log('Form values:', values);
+		console.log('env works', process.env.BUKETOCHKA_BOT_TOKEN)
     setSubmitting(false);
   };
 

@@ -26,7 +26,6 @@ const MainLayout: React.FC<Props> = ({children}) => {
   useEffect(() => {
     const savedProducts = localStorage.getItem('products');
     if (savedProducts) CartStore.products = JSON.parse(savedProducts) as productType[];
-    console.log('localhost');
   }, []);
 
   return (
