@@ -47,10 +47,6 @@ const DeliveryDateTime: React.FC<Props> = ({
 
 	const [time, setTime] = useState('');
 
-	useEffect(() => {
-		console.log('time: ', time);
-	}, [time]);
-
 	return (
 		<div className={styles.deliveryDate}>
 			<div className={styles.deliveryWrap}>

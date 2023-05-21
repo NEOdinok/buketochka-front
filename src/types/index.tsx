@@ -44,6 +44,18 @@ type categoryDataType = {
 
 type categoriesType = Array<categoryDataType>;
 
+type FormValuesType = {
+	name: string,
+	email: string,
+	phone: string,
+	additional: string,
+	contactOption: string,
+	deliveryDate: string,
+	deliveryTime: string,
+	deliveryOption: string,
+	deliveryAdditional: string,
+}
+
 export {
   type productType,
   type imageData,
@@ -51,4 +63,5 @@ export {
   type categoryDataType,
   type categoriesType,
   type imagesDataType,
+  type FormValuesType,
 }

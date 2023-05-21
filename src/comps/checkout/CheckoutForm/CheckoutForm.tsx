@@ -7,6 +7,8 @@ import DeliveryDateTime from "../DeliveryDateTime/DeliveryDateTime";
 import ShippingOptions from "../ShippingOptions/ShippingOptions";
 import RecieverData from "../RecieverData/RecieverData";
 import SubmitBtn from "@/comps/app/SubmitBtn/SubmitBtn";
+import { sendOrderToTelegam } from "@/utils/utilFunctions";
+import { useRouter } from "next/router";
 import * as Yup from 'yup';
 
 interface FormValues {
@@ -42,13 +44,16 @@ const OrderSchema = Yup.object().shape({
 });
 
 const CheckoutForm: NextPage = () => {
-	const handleSubmit = (
+	const router = useRouter();
+
+	const handleSubmit = async (
     values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>
   ) => {
-    console.log('Form values:', values);
-		console.log('env works', process.env.BUKETOCHKA_BOT_TOKEN)
+    console.log('triggering function with:', values);
+		await sendOrderToTelegam(values);
     setSubmitting(false);
+		router.replace(`/thanks`);
   };
 
 	return (
