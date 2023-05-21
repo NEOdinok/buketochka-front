@@ -139,15 +139,13 @@ const Navbar: NextPage = () => {
 				>
 					<div className={ styles.cartContent }>
 						<div className={styles.cartIconSection}>
-							{/* "material-icons" */}
-							<i className={ cn(styles.cartIcon) }>add_shopping_cart</i>
+							<i className={ cn(styles.cartIcon, "material-icons") }>add_shopping_cart</i>
 							<div className={ styles.counter }>
 								<span>{CartStore.count()}</span>
 							</div>
 						</div>
 						<div className={styles.cartArrowSection}>
 							<span className={ styles.toCartSpan }>В корзину</span>
-							{/* , "material-icons" */}
 							<i className={ cn(styles.arrowIcon, "material-icons") }>keyboard_arrow_right</i>
 						</div>
 					</div>
