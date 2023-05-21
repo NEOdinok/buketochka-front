@@ -148,7 +148,7 @@ const Navbar: NextPage = () => {
 						<div className={styles.cartArrowSection}>
 							<span className={ styles.toCartSpan }>В корзину</span>
 							{/* , "material-icons" */}
-							<i className={ cn(styles.arrowIcon) }>keyboard_arrow_right</i>
+							<i className={ cn(styles.arrowIcon, "material-icons") }>keyboard_arrow_right</i>
 						</div>
 					</div>
 				</div>
