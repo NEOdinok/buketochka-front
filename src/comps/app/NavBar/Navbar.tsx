@@ -14,9 +14,6 @@ import { faInstagram, faTelegram, faWhatsapp } from '@fortawesome/free-brands-sv
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { NextPage } from 'next';
-// interface serverSideProps {
-// 	data: categoriesType,
-// }
 
 const Navbar: NextPage = () => {
 	const router = useRouter();
@@ -142,14 +139,16 @@ const Navbar: NextPage = () => {
 				>
 					<div className={ styles.cartContent }>
 						<div className={styles.cartIconSection}>
-							<i className={ cn(styles.cartIcon, "material-icons") }>add_shopping_cart</i>
+							{/* "material-icons" */}
+							<i className={ cn(styles.cartIcon) }>add_shopping_cart</i>
 							<div className={ styles.counter }>
 								<span>{CartStore.count()}</span>
 							</div>
 						</div>
 						<div className={styles.cartArrowSection}>
 							<span className={ styles.toCartSpan }>В корзину</span>
-							<i className={ cn(styles.arrowIcon, "material-icons") }>keyboard_arrow_right</i>
+							{/* , "material-icons" */}
+							<i className={ cn(styles.arrowIcon) }>keyboard_arrow_right</i>
 						</div>
 					</div>
 				</div>
