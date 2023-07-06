@@ -25,6 +25,9 @@ const Home: NextPage = () => {
   const comboSectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    setTimeout(() => {
+      setHeroActive(true);
+    }, 2000);
 
     document.addEventListener("scroll", (e: Event) => {
       isInViewport(heroSectionRef, setHeroActive);
@@ -41,10 +44,6 @@ const Home: NextPage = () => {
       isInViewport(comboSectionRef, setComboActive); 
     }))
   }, []);
-
-  setTimeout(() => {
-    setHeroActive(true);
-  }, 2000);
 
   return (
     <>
