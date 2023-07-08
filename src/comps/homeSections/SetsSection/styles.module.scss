@@ -27,24 +27,27 @@
 	letter-spacing: 2px;
 	color: #fd5949;
 	margin: 6rem 0;
+	opacity: 0;
+	transform: translateX(-100%);
+	transition: opacity 500ms 800ms, transform 500ms 800ms;
 }
 
 .button {
-	text-transform: uppercase;
-	letter-spacing: 5px;
+	letter-spacing: 3px;
 	text-align: center;
 	cursor: pointer;
 	padding: 2rem 5rem;
 	color: #fff;
-	border-radius: 1.5rem;
+	border-radius: .5rem;
 	background-color: #fd5949;
 	outline: none;
 	border: none;
 	box-shadow: $shadow;
-	font-size: 1.5rem;
+	font-size: 1.8rem;
 	font-weight: 700;
 	z-index: 1;
-	transition: box-shadow 200ms, transform 200ms;
+	transform: scale(0);
+	transition: box-shadow 200ms, transform 500ms 300ms;
 
 	&:hover {
 		box-shadow: none;
@@ -55,7 +58,7 @@
 .image {
 	position: absolute;
 	object-fit: contain;
-	transition: all 950ms ease-out;
+	transition: all 800ms ease-out;
   z-index: 1;
 }
 
@@ -76,7 +79,6 @@
 .active .rightSet,
 .active .leftSet {
 	opacity: .4;
-	// background: hsla(0,0%,100%,.65);
 }
 
 .active .rightSet {
@@ -87,6 +89,15 @@
 .active .leftSet {
 	top: -40%;
 	width: 35vw;
+}
+
+.active .button {
+	transform: scale(1);
+}
+
+.active .price {
+	opacity: 1;
+	transform: translateX(0);
 }
 
 @include tablet {

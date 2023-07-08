@@ -15,11 +15,10 @@ const BerrySection = forwardRef<HTMLElement, Props>((props, ref) => {
 		<section ref={ref} className={cn(styles.comboSection, active? styles.active: '')}>
 			<div className={styles.content}>
 				<div className={styles.textContainer}>
-					<p className={styles.text}>И их<br />безубречное<br />сочетание</p>
+					<p className={styles.text}>И их безупречное<br />сочетание</p>
 				</div>
-				<div className={styles.imageContainer}>
-					<Image className={styles.image} src={comboImage} alt="" />
-				</div>
+
+				<Image className={styles.image} src={comboImage} alt="" />
 			</div>
 		</section>
 	);

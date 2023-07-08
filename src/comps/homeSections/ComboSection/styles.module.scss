@@ -3,6 +3,7 @@
 @import '/src/styles/vars';
 
 .comboSection {
+	height: 110vh;
 	background-color: #d0b6e3;
 	position: relative;
 	display: flex;
@@ -13,8 +14,9 @@
 .content {
 	position: relative;
 	display: flex;
+	height: 100%;
+	width: 100%;
 	max-width: 100rem;
-	max-height: 100rem;
 }
 
 .textContainer {
@@ -23,53 +25,91 @@
 	align-items: center;
 }
 
-.imageContainer {
-	height: 100%;
-	width: 100%;
-	position: relative;
-}
-
 .image {
+	position: absolute;
+	transform: scale(0) translateX(-50%);
 	opacity: 0;
-	transform: translateX(-30rem);
-	transition: all 500ms;
+	transition: transform 500ms 500ms, opacity 500ms 500ms;
 }
 
 .active .image {
+	transform: scale(1);
 	opacity: 1;
-	transform: scale(.7);
 }
 
-.text {
-	text-transform: uppercase;
-	text-align: center;
-	font-weight: 500;
-	line-height: 10rem;
-	color: white;
-	transition: opacity 750ms ease;
-}
+.textContainer {
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	opacity: 0;
+	padding: 0 2rem;
+	transition: opacity 500ms 1000ms, transform 500ms 1000ms;
 
-@include desktop {
 	.text {
+		text-transform: uppercase;
+		font-weight: 500;
+		color: #fff;
+		text-shadow: 1px 2px 30px hsla(0,0%,100%,.7);
+		line-height: 7rem;
 		font-size: 4rem;
 	}
 }
 
-@include mobileAndTablet {
-	.text {
-		font-size: 3.5rem;
+.active .textContainer {
+	opacity: 1;
+}
+
+@include desktop {
+	.content {
+		align-items: flex-start;
 	}
 
-	.chocoSection {
-		padding-top: 20rem;
+	.textContainer {
+		margin-left: 5%;
+		margin-top: 15%;
 	}
 
 	.active .image {
-		transform: scale(.7);
+		right: -48vh;
+		top: 0;
+		transform: scale(.5);
+	}
+}
+
+@include mobileAndTablet {
+	.comboSection {
+		padding-top: 20rem;
 	}
 
 	.content {
-		margin-top: 20rem;
 		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.textContainer {
+		justify-content: center;
+
+		.text {
+			font-size: 3.5rem;
+		}
+	}
+
+}
+
+@include tablet {
+	.active .image {
+		transform: scale(.5);
+		top: -30vh;
+		right: -40vh;
+	}
+}
+
+@include mobile {
+	.active .image {
+		transform: scale(.3);
+		top: -20vh;
+		right: -58vh;
 	}
 }

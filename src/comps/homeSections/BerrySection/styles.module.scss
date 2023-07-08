@@ -41,7 +41,6 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	right: 50%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -62,13 +61,13 @@
 
 .image {
 	position: relative;
+	transform: scale(1);
 	transition: transform 500ms 500ms;
 }
 
 .image, .text {
 	width: fit-content;
 }
-
 
 @include desktop {
 	.text {
@@ -77,6 +76,10 @@
 
 	.berrySection {
 		margin: 70vh 0;
+	}
+
+	.textContainer {
+		right: 50%;
 	}
 
 	.active .image {
@@ -98,4 +101,22 @@
 	.berrySection {
 		margin: 50vh 0;
 	}
+
+	.textContainer {
+		right: 0;
+		left: 0;
+	}
+
+	.active .image {
+		transform: scale(.7);
+	}
+
+	.active .textContainer {
+		opacity: 1;
+		transform: scale(1);
+		right: 0;
+		left: 0;
+		top: 50%;
+	}
 }
+
