@@ -21,7 +21,7 @@ const CartCard: React.FC<Props> = ({ product }) => {
 			<div className={styles.imageSection}>
 				<img
 					src={product.imagesData.filter(img => img.isMain === true)[0].url}
-					className={styles.mainImg} alt="no image"
+					className={styles.mainImg} alt="No image.. :("
 				/>
 			</div>
 

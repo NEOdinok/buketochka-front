@@ -83,13 +83,13 @@
 	}
 
 	.active .image {
-		transform: translateX(-150%);
+		transform: translateX(-130%);
 	}
 
 	.active .textContainer {
 		opacity: 1;
 		transform: scale(1);
-		right: 5%;
+		right: 15%;
 	}
 }
 

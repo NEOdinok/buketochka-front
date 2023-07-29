@@ -32,3 +32,12 @@ a {
     overflow: hidden;
   }
 }
+
+.white-glow-text {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  line-height: 8rem;
+  color: white;
+  text-shadow: 1px 2px 30px hsla(0, 0%, 100%, .7);
+}

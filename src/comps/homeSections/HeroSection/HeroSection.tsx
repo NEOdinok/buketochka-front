@@ -20,7 +20,7 @@ const HeroSection = forwardRef<HTMLElement, Props>((props, ref) => {
 				{isMobile && <Image className={styles.heroImg} src={heroImageMobile} alt="Hero image mobile" />}
 				{!isMobile && <Image className={styles.heroImg} src={heroImage} alt="Hero image" />}
 				<div className={ styles.darkenImage } />
-				<p className={styles.heroText}>Что<br />у нас есть?</p>
+				<p className={cn(styles.heroText, 'white-glow-text')}>Что<br />у нас есть?</p>
 			</div>
 
 			<p className={cn(styles.berryEmoji, styles.emoji)}>&#127827;</p>

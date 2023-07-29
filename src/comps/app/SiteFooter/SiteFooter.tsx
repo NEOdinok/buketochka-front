@@ -12,16 +12,17 @@ const SiteFooter = () => {
 			<div className={styles.linksContainer}>
 				<Link href="#" target="_blank" className={styles.socialLink}>
 					<FontAwesomeIcon className={cn(styles.telegramIcon, styles.socialIcon)} icon={faTelegram}/>
+					<p className={styles.linkText}>Telegram</p>
 				</Link>
 
 				<Link href="#" target="_blank" className={styles.socialLink}>
 					<FontAwesomeIcon className={cn(styles.whatsappIcon, styles.socialIcon)} icon={faWhatsapp}/>
-					{/* <i className="fab fa-instagram"></i> */}
+					<p className={styles.linkText}>Whatsapp</p>
 				</Link>
 
 				<Link href="#" target="_blank" className={styles.socialLink}>
-					{/* <FontAwesomeIcon className={cn(styles.instagramIcon, styles.socialIcon)} icon={faInstagram}/> */}
 					<i className={cn(styles.instagramIcon, styles.socialIcon, 'fab fa-instagram')}></i>
+					<p className={styles.linkText}>Instagram</p>
 				</Link>
 			</div>
 		</footer>

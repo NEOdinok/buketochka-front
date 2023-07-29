@@ -4,12 +4,9 @@
 .footer {
 	position: relative;
 	display: flex;
+	flex-direction: column;
+	margin: 15rem 0;
 	align-items: center;
-	justify-content: space-between;
-	padding: 3rem 0;
-	width: 100%;
-	background-color: #fff;
-	padding: 2rem;
 }
 
 .header {
@@ -21,17 +18,38 @@
 
 .linksContainer {
 	display: flex;
-	gap: 2rem;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 120rem;
 }
 
-.socialIcon {
-	font-size: 4rem;
+.socialLink {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
 
-	&:hover {
+	.socialIcon {
+		font-size: 8.5rem;
+		transition: transform 100ms ease;
+	}
+
+	.linkText {
+		font-family: monospace;
+		width: 100%;
+		text-align: center;
+		font-size: 1.6rem;
+		color: $black-text;
+	}
+
+	&:hover > .socialIcon {
 		opacity: .9;
 		transform: scale(1.05);
 	}
+
 }
+
 
 .instagramIcon {
 	background: #d6249f;
@@ -48,13 +66,17 @@
 	color: #00e676;
 }
 
-@include desktop {
+@include tabletAndDesktop {
 	.header {
 		font-size: 4rem;
 	}
+
+	.linksContainer {
+		padding: 0 20rem;
+	}
 }
 
-@include mobileAndTablet {
+@include mobile {
 	.header {
 		font-size: 3rem;
 	}
@@ -63,4 +85,8 @@
 		flex-direction: column;
 	}
 
+	.linksContainer {
+		flex-direction: column;
+		gap: 5rem;
+	}
 }

@@ -6,12 +6,10 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: $header-padding;
 }
 
 .headerWrapper {
   width: 100%;
-  display: flex;
   max-width: 120rem;
 }
 
@@ -23,8 +21,15 @@
 .socialAndBurgerSection,
 .sloganSection,
 .logoSection {
-  flex: 1;
   display: flex;
+}
+
+.sloganSection {
+  align-items: center;
+}
+
+.logoSection {
+  align-items: center;
   justify-content: center;
 }
 
@@ -32,86 +37,77 @@
   height: fit-content;
 }
 
+@include tabletAndDesktop {
+  .header {
+    padding: 4rem 2rem;
+  }
+}
+
 @include desktop {
-  .burgerBtn {
-    display: none;
+  .headerWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
   }
 
-  .headerWrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
   .logo {
     max-width: $header-logo-width-desktop;
   }
 }
 
-@include mobileAndTablet {
+@include tablet {
   .headerWrapper {
-    padding-right: 15%;
     display: flex;
+    gap: 5rem;
   }
+}
 
+@include mobileAndTablet {
   .burgerBtnContainer {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
-    height: $header-and-burger-height;
+    z-index: 3;
   }
 
   .logo {
     max-width: $header-logo-width-mob-and-tab;
     max-height: $header-and-burger-height;
   }
-
-  .socialAndBurgerSection {
-    top: 0;
-    right: 0;
-    position: fixed;
-    margin: 2rem;
-    z-index: 3;
-  }
-
-  .logoSection,
-  .sloganSection {
-    justify-content: flex-start;
-  }
-
-  .logo {
-    max-height: 20rem;
-  }
-}
-
-@include tablet {
-  .headerWrapper {
-    justify-content: flex-start;
-    gap: 1rem;
-  }
-
-  .sloganSection {
-    flex: 2;
-  }
-
-  .slogan {
-    font-weight: 500;
-  }
 }
 
 @include mobile {
-  .headerWrapper {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
   .header {
-    padding: 2rem;
+    padding: 2.5rem;
   }
 
-  .slogan {
-    text-align: start;
-    max-width: 25rem;
+  .headerWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 1rem;
+  }
+
+  .logoSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .sloganSection {
+    display: flex;
+    justify-content: flex-start;
+    grid-area: 2 / 1 / 3 / 2;
+
+    .slogan { 
+      text-align: start;
+    }
+  }
+
+  .socialAndBurgerSection {
+    grid-area: 1 / 2 / 3 / 3;
+    justify-content: flex-end;
   }
 }
