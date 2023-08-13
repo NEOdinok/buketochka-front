@@ -31,7 +31,7 @@
 	gap: 2rem;
 
 	.socialIcon {
-		font-size: 8.5rem;
+		font-size: 5.5rem;
 		transition: transform 100ms ease;
 	}
 
@@ -66,13 +66,21 @@
 	color: #00e676;
 }
 
+@include desktop {
+	.linksContainer {
+		padding: 0 20rem;
+	}
+}
+
 @include tabletAndDesktop {
 	.header {
 		font-size: 4rem;
 	}
+}
 
+@include tablet {
 	.linksContainer {
-		padding: 0 20rem;
+		padding: 0 5rem;
 	}
 }
 

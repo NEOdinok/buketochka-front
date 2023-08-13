@@ -7,10 +7,7 @@ import { faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { productType } from '@/types';
-import CartStore from '@/stores/CartStore';
-import { toggleIsProductInCart } from '@/utils/utilFunctions';
 import AmountSelector from '../AmountSelector/AmountSelector';
-import { capitalizeFirstLetter } from '@/utils/utilFunctions';
 
 interface productProps {
   product: productType;
@@ -47,7 +44,6 @@ const Set: NextPage<productProps> = ({ product }) => {
           <div className={styles.namePriceDescription}>
             <h1 className={styles.productName}>{product.name}</h1>
             <h1 className={styles.productPrice}>{product.price} ₽</h1>
-            <span className={styles.description}>{capitalizeFirstLetter(product.description)}</span>
           </div>
 
 
