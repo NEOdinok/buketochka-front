@@ -136,3 +136,10 @@
 		max-width: 72rem;
 	}
 }
+
+@include breakpoint(0px, 480px) {
+	.cartCard {
+		width: 100% !important;
+		max-width: 100%;;
+	}
+}
