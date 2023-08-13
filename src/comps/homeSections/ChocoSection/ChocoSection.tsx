@@ -15,7 +15,7 @@ const BerrySection = forwardRef<HTMLElement, Props>((props, ref) => {
 		<section ref={ref} className={cn(styles.chocoSection, active? styles.active: '')}>
 			<div className={styles.content}>
 				<div className={styles.textContainer}>
-					<p className={styles.text}>бельгийский<br />шоколад</p>
+					<p className={cn(styles.text, 'white-glow-text')}>бельгийский<br />шоколад</p>
 				</div>
 
 				<div className={styles.imageContainer}>

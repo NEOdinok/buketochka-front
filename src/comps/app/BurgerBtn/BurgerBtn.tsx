@@ -7,12 +7,11 @@ import UIStore from '@/stores/UIStore';
 const BurgerBtn: React.FC = observer(() => {
 	return (
 		<button
-			className={cn(styles.menuBtn, UIStore.isMenuOpen? styles.onMenu: '')}
+			className={cn(styles.menuBtn, UIStore.isMenuOpen? styles.menuOpened: '')}
 			onClick={() => UIStore.toggleMenuOpen()}
 		>
-			<span className={cn(styles.menuBtnLine, styles.menuBtnLineTop)}></span>
-			<span className={cn(styles.menuBtnLine, styles.menuBtnLineMid)}></span>
-			<span className={cn(styles.menuBtnLine, styles.menuBtnLineBot)}></span>
+			<span className={cn(styles.menuBtnLine, styles.topLine)}></span>
+			<span className={cn(styles.menuBtnLine, styles.bottomLine)}></span>
 		</button>
 	);
 })

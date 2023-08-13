@@ -13,6 +13,12 @@
 	height: fit-content;
 }
 
+.productWrap {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
 .amountBtn,
 .cartBtn {
 	outline: none;
@@ -167,15 +173,17 @@
 
 @include tabletAndDesktop {
 	.namePriceDescription {
-		position: absolute;
+		// position: absolute;
 		top: 0;
 	}
 }
 
 @include desktop {
 	.productPreview {
-		gap: 2rem;
+		gap: 10rem;
 		padding: 6rem;
+		max-width: 1200px;
+		width: 100%;
 	}
 
 	.carouselSection {
@@ -184,6 +192,7 @@
 
 	.infoSection {
 		flex: 2;
+		justify-content: space-between;
 	}
 }
 
